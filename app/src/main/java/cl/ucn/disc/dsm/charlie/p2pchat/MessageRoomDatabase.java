@@ -25,10 +25,12 @@ import java.util.concurrent.Executors;
 @Database(entities = {Message.class}, version = 1, exportSchema = false)
 public abstract class MessageRoomDatabase extends RoomDatabase {
 
-  public abstract Message message();
+  public abstract Message messageDao();
 
   private static volatile MessageRoomDatabase INSTANCE;
+
   private static final int NUMBER_OF_THREADS = 4;
+
   static final ExecutorService databaseWriteExecutor =
       Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
@@ -37,7 +39,7 @@ public abstract class MessageRoomDatabase extends RoomDatabase {
       synchronized (MessageRoomDatabase.class) {
         if (INSTANCE == null) {
           INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-              MessageRoomDatabase.class, "word_database")
+              MessageRoomDatabase.class, "message_database")
               .build();
         }
       }

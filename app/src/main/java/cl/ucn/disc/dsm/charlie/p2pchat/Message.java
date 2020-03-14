@@ -12,8 +12,10 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
+import androidx.room.Entity;
 import java.time.LocalDateTime;
 
+@Entity(tableName = "message_table")
 public class Message {
 
     private final int Id_Mess;
