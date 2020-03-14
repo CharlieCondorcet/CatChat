@@ -1,7 +1,7 @@
 <component name="CopyrightManager">
-  <settings default="mi copy">
+  <settings default="mit-copyright">
     <module2copyright>
-      <element module="All" copyright="mi copy" />
+      <element module="All" copyright="mit-copyright" />
     </module2copyright>
   </settings>
 </component>
