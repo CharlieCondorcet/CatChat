@@ -12,25 +12,37 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
-import androidx.room.Query;
-import java.util.List;
+import android.content.Context;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @author Charlie Condorcet.
  */
-public interface MessageDAO {
+@Database(entities = {Message.class}, version = 1, exportSchema = false)
+public abstract class MessageRoomDatabase extends RoomDatabase {
 
-  // allowing the insert of the same word multiple times by passing a
-  // conflict resolution strategy.
-  @Insert(onConflict = OnConflictStrategy.IGNORE)
-  void insert(Message message);
+  public abstract Message message();
 
-  @Query("DELETE FROM message_table")
-  void deleteAll();
+  private static volatile MessageRoomDatabase INSTANCE;
+  private static final int NUMBER_OF_THREADS = 4;
+  static final ExecutorService databaseWriteExecutor =
+      Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-  @Query("SELECT * from message_table ORDER BY word ASC")
-  List<Message> getMessageList();
+  static MessageRoomDatabase getDatabase(final Context context) {
+    if (INSTANCE == null) {
+      synchronized (MessageRoomDatabase.class) {
+        if (INSTANCE == null) {
+          INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+              MessageRoomDatabase.class, "word_database")
+              .build();
+        }
+      }
+    }
+    return INSTANCE;
+  }
 
 }
