@@ -16,7 +16,7 @@ import androidx.room.Entity;
 import java.time.LocalDateTime;
 
 /**
- * The Message class.
+ * The Message class like a Entity.
  *
  * @author Charlie Condorcet.
  */
