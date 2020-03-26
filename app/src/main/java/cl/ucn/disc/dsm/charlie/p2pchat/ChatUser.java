@@ -18,31 +18,67 @@ package cl.ucn.disc.dsm.charlie.p2pchat;
  * @author Charlie Condorcet.
  */
 public class ChatUser {
-    private final String Name;
-    private final int Id;
-    private final String Email;
-    private final String Password;
 
-    public ChatUser(String name, int id, String email, String password) {
-        this.Name = name;
-        this.Id = id;
-        this.Email = email;
-        this.Password = password;
-    }
+  /**
+   * The Name.
+   */
+  private final String Name;
 
-    public String getName() {
-        return Name;
-    }
+  /**
+   * The Id.
+   */
+  private final int Id;
 
-    public int getId() {
-        return Id;
-    }
+  /**
+   * The Email.
+   */
+  private final String Email;
 
-    public String getEmail() {
-        return Email;
-    }
+  /**
+   * The Password.
+   */
+  private final String Password;
 
-    public String getPassword() {
-        return Password;
-    }
+  /**
+   * The Constructor.
+   *
+   * @param Name.
+   * @param Id.
+   * @param Email.
+   * @param Password.
+   */
+  public ChatUser(String name, int id, String email, String password) {
+    this.Name = name;
+    this.Id = id;
+    this.Email = email;
+    this.Password = password;
+  }
+
+  /**
+   * @return The Name.
+   */
+  public String getName() {
+    return Name;
+  }
+
+  /**
+   * @return The Id.
+   */
+  public int getId() {
+    return Id;
+  }
+
+  /**
+   * @return The Email.
+   */
+  public String getEmail() {
+    return Email;
+  }
+
+  /**
+   * @return The Password.
+   */
+  public String getPassword() {
+    return Password;
+  }
 }
