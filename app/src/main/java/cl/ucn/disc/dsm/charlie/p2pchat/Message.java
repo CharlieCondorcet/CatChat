@@ -15,6 +15,11 @@ package cl.ucn.disc.dsm.charlie.p2pchat;
 import androidx.room.Entity;
 import java.time.LocalDateTime;
 
+/**
+ * The Message class.
+ *
+ * @author Charlie Condorcet.
+ */
 @Entity(tableName = "message_table")
 public class Message {
 
@@ -23,16 +28,16 @@ public class Message {
     private final LocalDateTime Created;
     private final String Latitude;
     private final String Longitude;
-    private final int Error;
+    private final int ErrorData;
 
     public Message(int id_Mess, String text, LocalDateTime created, String latitude,
-        String longitude, int error) {
+        String longitude, int errorData) {
         Id_Mess = id_Mess;
         Text = text;
         Created = created;
         Latitude = latitude;
         Longitude = longitude;
-        Error = error;
+        ErrorData = errorData;
     }
 
     public int getId_Mess() {
@@ -55,7 +60,7 @@ public class Message {
         return Longitude;
     }
 
-    public int getError() {
-        return Error;
+    public int getErrorData() {
+        return ErrorData;
     }
 }

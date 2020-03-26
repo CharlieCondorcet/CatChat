@@ -12,6 +12,11 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
+/**
+ * The User class.
+ *
+ * @author Charlie Condorcet.
+ */
 public class ChatUser {
     private final String Name;
     private final int Id;

@@ -15,6 +15,11 @@ package cl.ucn.disc.dsm.charlie.p2pchat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+/**
+ * The principal Activity.
+ *
+ * @author Charlie Condorcet.
+ */
 public class MainActivity extends AppCompatActivity {
 
   @Override
@@ -23,3 +28,5 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
   }
 }
+
+
