@@ -23,44 +23,96 @@ import java.time.LocalDateTime;
 @Entity(tableName = "message_table")
 public class Message {
 
-    private final int Id_Mess;
-    private final String Text;
-    private final LocalDateTime Created;
-    private final String Latitude;
-    private final String Longitude;
-    private final int ErrorData;
+  /**
+   * The IdMessage.
+   */
+  private final int IdMessage;
 
-    public Message(int id_Mess, String text, LocalDateTime created, String latitude,
-        String longitude, int errorData) {
-        Id_Mess = id_Mess;
-        Text = text;
-        Created = created;
-        Latitude = latitude;
-        Longitude = longitude;
-        ErrorData = errorData;
-    }
+  /**
+   * The Text.
+   */
+  private final String Text;
 
-    public int getId_Mess() {
-        return Id_Mess;
-    }
+  /**
+   * The Created.
+   */
+  private final LocalDateTime Created;
 
-    public String getText() {
-        return Text;
-    }
+  /**
+   * The Latitude.
+   */
+  private final String Latitude;
 
-    public LocalDateTime getCreated() {
-        return Created;
-    }
+  /**
+   * The Longitude.
+   */
+  private final String Longitude;
 
-    public String getLatitude() {
-        return Latitude;
-    }
+  /**
+   * The ErrorData.
+   */
+  private final int ErrorData;
 
-    public String getLongitude() {
-        return Longitude;
-    }
+  /**
+   * The Constructor.
+   *
+   * @param IdMessage.
+   * @param Text.
+   * @param Created.
+   * @param Latitude.
+   * @param Longitude.
+   * @param ErrorData.
+   */
+  public Message(int id_Message, String text, LocalDateTime created, String latitude,
+      String longitude, int errorData) {
+    IdMessage = id_Message;
+    Text = text;
+    Created = created;
+    Latitude = latitude;
+    Longitude = longitude;
+    ErrorData = errorData;
+  }
 
-    public int getErrorData() {
-        return ErrorData;
-    }
+  /**
+   * @return The IdMessage.
+   */
+  public int getIdMessage() {
+    return IdMessage;
+  }
+
+  /**
+   * @return The Text.
+   */
+  public String getText() {
+    return Text;
+  }
+
+  /**
+   * @return The Created.
+   */
+  public LocalDateTime getCreated() {
+    return Created;
+  }
+
+  /**
+   * @return The Latitude.
+   */
+  public String getLatitude() {
+    return Latitude;
+  }
+
+  /**
+   * @return The Longitude.
+   */
+  public String getLongitude() {
+    return Longitude;
+  }
+
+  /**
+   * @return The ErrorData.
+   */
+  public int getErrorData() {
+    return ErrorData;
+  }
+
 }
