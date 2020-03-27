@@ -20,6 +20,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import org.w3c.dom.Text;
 
 /**
  * @author Charlie Condorcet.
@@ -27,7 +28,7 @@ import java.util.concurrent.Executors;
 @Database(entities = {Message.class}, version = 1, exportSchema = false)
 public abstract class MessageRoomDatabase extends RoomDatabase {
 
-  public abstract Message messageDao();
+  public abstract MessageDao messageDao();
 
   private static volatile MessageRoomDatabase INSTANCE;
 
@@ -48,6 +49,28 @@ public abstract class MessageRoomDatabase extends RoomDatabase {
     }
     return INSTANCE;
   }
+
+  //Method to poblate the data base with a examples to print in the Activity.
+  private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+    @Override
+    public void onOpen(@NonNull SupportSQLiteDatabase db) {
+      super.onOpen(db);
+
+      // If you want to keep data through app restarts,
+      // comment out the following block
+      databaseWriteExecutor.execute(() -> {
+        // Populate the database in the background.
+        // If you want to start with more words, just add them.
+        MessageDao dao = INSTANCE.messageDao();
+        dao.deleteAll();
+
+        Message message = new Message(1, "Hello", null, null, null, 0);
+        dao.insert(message);
+        message = new Message(2, "World", null, null, null, 0);
+        dao.insert(message);
+      });
+    }
+  };
 
 
 }
