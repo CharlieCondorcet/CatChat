@@ -21,7 +21,7 @@ import java.util.List;
  */
 class MessageRepository {
 
-  private MessageDAO mMessagedDao;
+  private MessageDao mMessagedDao;
   private LiveData<List<Message>> mAllMessages;
 
   // Note that in order to unit test the WordRepository, you have to remove the Application
@@ -30,7 +30,7 @@ class MessageRepository {
   // https://github.com/googlesamples
   MessageRepository(Application application) {
     MessageRoomDatabase db = MessageRoomDatabase.getDatabase(application);
-    this.mMessagedDao = (MessageDAO) db.messageDao();
+    this.mMessagedDao = (MessageDao) db.messageDao();
     this.mAllMessages = (LiveData<List<Message>>) this.mMessagedDao.getMessageList();
   }
 

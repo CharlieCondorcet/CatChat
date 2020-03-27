@@ -22,7 +22,7 @@ import java.util.List;
  * @author Charlie Condorcet.
  */
 @Dao
-public interface MessageDAO {
+public interface MessageDao {
 
   // allowing the insert of the same word multiple times by passing a
   // conflict resolution strategy.

@@ -13,6 +13,7 @@
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
 import androidx.annotation.NonNull;
+import androidx.room.Dao;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import java.time.LocalDateTime;
@@ -28,8 +29,6 @@ public class Message {
   /**
    * The IdMessage.
    */
-  @PrimaryKey
-  @NonNull
   private int IdMessage;
 
   /**
