@@ -12,7 +12,9 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 import java.time.LocalDateTime;
 
 /**
@@ -26,32 +28,34 @@ public class Message {
   /**
    * The IdMessage.
    */
-  private final int IdMessage;
+  @PrimaryKey
+  @NonNull
+  private int IdMessage;
 
   /**
    * The Text.
    */
-  private final String Text;
+  private String Text;
 
   /**
    * The Created.
    */
-  private final LocalDateTime Created;
+  private LocalDateTime Created;
 
   /**
    * The Latitude.
    */
-  private final String Latitude;
+  private String Latitude;
 
   /**
    * The Longitude.
    */
-  private final String Longitude;
+  private String Longitude;
 
   /**
    * The ErrorData.
    */
-  private final int ErrorData;
+  private int ErrorData;
 
   /**
    * The Constructor.
@@ -63,14 +67,14 @@ public class Message {
    * @param Longitude.
    * @param ErrorData.
    */
-  public Message(int id_Message, String text, LocalDateTime created, String latitude,
-      String longitude, int errorData) {
-    IdMessage = id_Message;
-    Text = text;
-    Created = created;
-    Latitude = latitude;
-    Longitude = longitude;
-    ErrorData = errorData;
+  public Message(int IdMessage, String Text, LocalDateTime Created, String Latitude,
+      String Longitude, int ErrorData) {
+    this.IdMessage = IdMessage;
+    this.Text = Text;
+    this.Created = Created;
+    this.Latitude = Latitude;
+    this.Longitude = Longitude;
+    this.ErrorData = ErrorData;
   }
 
   /**
@@ -111,8 +115,30 @@ public class Message {
   /**
    * @return The ErrorData.
    */
-  public int getErrorData() {
-    return ErrorData;
+  public int getErrorData() { return ErrorData; }
+
+
+  public void setIdMessage(int idMessage) {
+    IdMessage = idMessage;
   }
 
+  public void setText(String text) {
+    Text = text;
+  }
+
+  public void setCreated(LocalDateTime created) {
+    Created = created;
+  }
+
+  public void setLatitude(String latitude) {
+    Latitude = latitude;
+  }
+
+  public void setLongitude(String longitude) {
+    Longitude = longitude;
+  }
+
+  public void setErrorData(int errorData) {
+    ErrorData = errorData;
+  }
 }

@@ -12,6 +12,7 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
+import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -20,6 +21,7 @@ import java.util.List;
 /**
  * @author Charlie Condorcet.
  */
+@Dao
 public interface MessageDAO {
 
   // allowing the insert of the same word multiple times by passing a
