@@ -1,6 +1,6 @@
 
 # Chat Disc
-AndroidStudio - Chat  -  ROOM  - DocumentationGoogleJavaStyle
+AndroidStudio - Chat  -  ROOM  - DocumentationGoogleJavaStyle  -  [Backend](https://github.com/CharlieCondorcet/ChatDiscBackend)
 
 > The application to chat with anyone!
 
@@ -9,6 +9,7 @@ AndroidStudio - Chat  -  ROOM  - DocumentationGoogleJavaStyle
 
 * [Objetives](#objetives)
 * [Description/Instructions](#descriptioninstrutions)
+* [Backend](#backend)
 * [Screenshots](#screenshots)
 * [Features](#features)
 * [Technologies](#technologies)
@@ -20,6 +21,7 @@ AndroidStudio - Chat  -  ROOM  - DocumentationGoogleJavaStyle
 
 ## Objetives
 Develop an application to chat with other people.
+Develop the backend to ChatDisc.
 
 
 ## Description/Instrutions
@@ -30,9 +32,14 @@ connection, login to authenticate and find other users, in addition to other
 features that make the use of chat comfortable.
 
 
+## Backend
+the Backend you can find it in [ChatDiscBackend]("https://github.com/CharlieCondorcet/ChatDiscBackend")
+
+
 ## Screenshots
 
 Principal interface
+
 ![Screenshot](./img/img1.png)
 
 
@@ -64,6 +71,6 @@ Licenced by [MIT License](https://github.com/CharlieCondorcet/ChatDisc/blob/mast
 
 ## Contact
 - Created by [@CharlieCondorcet](https://github.com/charliecondorcet)
-- To report bugs and feedback: RandomNewsSupport@charliedroid.com
+- To report bugs and feedback: ChatDiscSupport@charliedroid.com
 - Official website to manage new Android projects: www.charliedroid.com
 
