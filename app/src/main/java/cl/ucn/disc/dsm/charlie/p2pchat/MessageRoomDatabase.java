@@ -43,6 +43,7 @@ public abstract class MessageRoomDatabase extends RoomDatabase {
         if (INSTANCE == null) {
           INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
               MessageRoomDatabase.class, "message_database")
+              .addCallback(sRoomDatabaseCallback)
               .build();
         }
       }
@@ -71,6 +72,5 @@ public abstract class MessageRoomDatabase extends RoomDatabase {
       });
     }
   };
-
 
 }
