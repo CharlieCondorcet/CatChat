@@ -14,6 +14,8 @@ package cl.ucn.disc.dsm.charlie.p2pchat;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * The principal Activity.
@@ -26,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    //Show the data in the recycler view.
+    RecyclerView recyclerView = findViewById(R.id.recyclerview);
+    final MessageListAdapter adapter = new MessageListAdapter(this);
+    recyclerView.setAdapter(adapter);
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
   }
 }
 
