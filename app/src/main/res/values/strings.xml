@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">P2PChat</string>
+  <string name="add_message">Add message</string>
+
 </resources>
