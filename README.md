@@ -31,8 +31,9 @@ features that make the use of chat comfortable.
 
 
 ## Screenshots
-Principal interface
 
+Principal interface
+![Screenshot](./img/img1.png)
 
 
 ## Features
