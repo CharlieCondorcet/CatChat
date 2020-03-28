@@ -34,6 +34,6 @@ public interface MessageDao {
   void deleteAll();
 
   @Query("SELECT * from message_table ORDER BY message ASC")
-  LiveData<List<Message>> getAlphabetizedWords();
+  LiveData<List<Message>> getAlphabetizedMessages();
 
 }

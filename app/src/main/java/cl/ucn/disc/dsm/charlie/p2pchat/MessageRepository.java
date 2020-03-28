@@ -31,7 +31,7 @@ class MessageRepository {
   MessageRepository(Application application) {
     MessageRoomDatabase db = MessageRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
-    this.mAllMessages = (LiveData<List<Message>>) this.mMessagedDao.getMessageList();
+    this.mAllMessages = (LiveData<List<Message>>) this.mMessagedDao.getAlphabetizedMessages();
   }
 
   // Room executes all queries on a separate thread.
