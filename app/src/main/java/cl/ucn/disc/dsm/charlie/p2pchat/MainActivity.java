@@ -13,6 +13,8 @@
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +35,8 @@ import javax.annotation.meta.When;
 public class MainActivity extends AppCompatActivity {
 
   private MessageViewModel mMessageViewModel;
+
+  public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,26 @@ public class MainActivity extends AppCompatActivity {
     });
 
   }
+
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+      Message message = new Message(1,
+          data.getStringExtra(NewMessageActivity.EXTRA_REPLY),
+          null,
+          null,
+          null,
+          0);
+      mMessageViewModel.insert(message);
+    } else {
+      Toast.makeText(
+          getApplicationContext(),
+          R.string.empty_not_saved,
+          Toast.LENGTH_LONG).show();
+    }
+  }
+
 }
 
 
