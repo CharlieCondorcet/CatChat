@@ -65,9 +65,9 @@ public abstract class MessageRoomDatabase extends RoomDatabase {
         MessageDao dao = INSTANCE.messageDao();
         dao.deleteAll();
 
-        Message message = new Message(1, "Hello", null, null, null, 0);
+        Message message = new Message(1, "Hola", null, null, null, 0);
         dao.insert(message);
-        message = new Message(2, "World", null, null, null, 0);
+        message = new Message(2, "Mundo", null, null, null, 0);
         dao.insert(message);
       });
     }
