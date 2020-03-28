@@ -17,8 +17,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Dao;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 import java.sql.DatabaseMetaData;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -45,8 +45,10 @@ public class Message {
   private String Text;
 
   /**
-   * The Created.
+   * The Creation date.
    */
+  //Fixed: bug to parse the date to sql format in room with TypeConverter class.
+  @TypeConverters(DateConverter.class)
   private Date Created;
 
   /**

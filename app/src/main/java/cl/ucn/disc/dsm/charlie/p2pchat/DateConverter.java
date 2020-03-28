@@ -16,6 +16,8 @@ import androidx.room.TypeConverter;
 import java.util.Date;
 
 /**
+ * DateConverter Class to parse the date format to sql format in the Room.
+ *
  * @author Charlie Condorcet.
  */
 public class DateConverter {
