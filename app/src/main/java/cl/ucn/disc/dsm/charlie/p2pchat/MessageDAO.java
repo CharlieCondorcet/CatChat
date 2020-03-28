@@ -12,6 +12,7 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -33,6 +34,6 @@ public interface MessageDao {
   void deleteAll();
 
   @Query("SELECT * from message_table ORDER BY message ASC")
-  List<Message> getMessageList();
+  LiveData<List<Message>> getAlphabetizedWords();
 
 }
