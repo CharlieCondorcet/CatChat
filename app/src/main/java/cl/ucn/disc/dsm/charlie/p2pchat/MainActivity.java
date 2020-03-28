@@ -12,10 +12,18 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
+import android.app.Activity;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import java.util.List;
+import javax.annotation.meta.When;
 
 /**
  * The principal Activity.
@@ -23,6 +31,8 @@ import androidx.recyclerview.widget.RecyclerView;
  * @author Charlie Condorcet.
  */
 public class MainActivity extends AppCompatActivity {
+
+  private MessageViewModel mMessageViewModel;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +44,20 @@ public class MainActivity extends AppCompatActivity {
     final MessageListAdapter adapter = new MessageListAdapter(this);
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    //When your Activity first starts, the ViewModelProviders will create the ViewModel
+    mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
+
+    // add an observer for the LiveData returned by getAlphabetizedMessages().
+    //The onChanged() method fires when the observed data changes and the activity is in the foreground.
+    mMessageViewModel.getAllMessages().observe(this, new Observer<List<Message>>() {
+      @Override
+      public void onChanged(@Nullable final List<Message> messages) {
+        // Update the cached copy of the words in the adapter.
+        adapter.setMessages(messages);
+      }
+    });
+
   }
 }
 
