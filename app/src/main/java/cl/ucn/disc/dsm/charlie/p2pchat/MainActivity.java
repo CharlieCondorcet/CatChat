@@ -14,6 +14,7 @@ package cl.ucn.disc.dsm.charlie.p2pchat;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 import javax.annotation.meta.When;
 
@@ -62,8 +64,19 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
+    //Start NewMessageActivity when the user taps the FAB.
+    FloatingActionButton fab = findViewById(R.id.fab);
+    fab.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        Intent intent = new Intent(MainActivity.this, NewMessageActivity.class);
+        startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
+      }
+    });
+
   }
 
+  //If the activity returns with RESULT_OK, insert the returned word into the database by calling the insert() method of the WordViewModel.
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
