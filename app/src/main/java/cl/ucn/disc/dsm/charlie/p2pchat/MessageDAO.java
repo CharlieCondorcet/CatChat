@@ -32,7 +32,7 @@ public interface MessageDao {
   @Query("DELETE FROM message_table")
   void deleteAll();
 
-  @Query("SELECT * from message_table ORDER BY word ASC")
+  @Query("SELECT * from message_table ORDER BY message ASC")
   List<Message> getMessageList();
 
 }

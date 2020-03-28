@@ -13,10 +13,15 @@
 package cl.ucn.disc.dsm.charlie.p2pchat;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Dao;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import java.sql.DatabaseMetaData;
 import java.time.LocalDateTime;
+import java.util.Date;
+
+
 
 /**
  * The Message class like a Entity.
@@ -29,6 +34,9 @@ public class Message {
   /**
    * The IdMessage.
    */
+  @PrimaryKey
+  @NonNull
+  @ColumnInfo(name="message")
   private int IdMessage;
 
   /**
@@ -39,7 +47,7 @@ public class Message {
   /**
    * The Created.
    */
-  private LocalDateTime Created;
+  private Date Created;
 
   /**
    * The Latitude.
@@ -66,7 +74,7 @@ public class Message {
    * @param Longitude.
    * @param ErrorData.
    */
-  public Message(int IdMessage, String Text, LocalDateTime Created, String Latitude,
+  public Message(int IdMessage, String Text, Date Created, String Latitude,
       String Longitude, int ErrorData) {
     this.IdMessage = IdMessage;
     this.Text = Text;
@@ -93,7 +101,7 @@ public class Message {
   /**
    * @return The Created.
    */
-  public LocalDateTime getCreated() {
+  public Date getCreated() {
     return Created;
   }
 
@@ -125,7 +133,7 @@ public class Message {
     Text = text;
   }
 
-  public void setCreated(LocalDateTime created) {
+  public void setCreated(Date created) {
     Created = created;
   }
 
