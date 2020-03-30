@@ -10,30 +10,38 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cl.ucn.disc.dsm.charlie.p2pchat;
+package cl.ucn.disc.dsm.charlie.p2pchat.room.services;
 
+import android.app.Application;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
-import androidx.room.Query;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.database.MessageRepository;
 import java.util.List;
 
 /**
+ * the MessageViewModel class to comunicate the UI with the repository.
+ *
  * @author Charlie Condorcet.
  */
-@Dao
-public interface MessageDao {
+public class MessageViewModel extends AndroidViewModel {
 
-  // allowing the insert of the same word multiple times by passing a
-  // conflict resolution strategy.
-  @Insert(onConflict = OnConflictStrategy.IGNORE)
-  void insert(Message message);
+  private MessageRepository mRepository;
 
-  @Query("DELETE FROM message_table")
-  void deleteAll();
+  private LiveData<List<Message>> mAllMessages;
 
-  @Query("SELECT * from message_table ORDER BY message ASC")
-  LiveData<List<Message>> getAlphabetizedMessages();
+  public MessageViewModel(Application application) {
+    super(application);
+    mRepository = new MessageRepository(application);
+    mAllMessages = mRepository.getmAllMessages();
+  }
+
+  public LiveData<List<Message>> getAllMessages() {
+    return mAllMessages;
+  }
+
+  public void insert(Message message) {
+    mRepository.insert(message);
+  }
 
 }

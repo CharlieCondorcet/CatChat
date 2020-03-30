@@ -10,7 +10,7 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cl.ucn.disc.dsm.charlie.p2pchat;
+package cl.ucn.disc.dsm.charlie.p2pchat.room.services;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -18,7 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+import cl.ucn.disc.dsm.charlie.p2pchat.R;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import java.util.List;
 
 /**
@@ -40,7 +41,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
   private final LayoutInflater mInflater;
   private List<Message> mMessages; // Cached copy of words
 
-  MessageListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+  public MessageListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
 
   @Override
   public MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -59,7 +60,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
     }
   }
 
-  void setMessages(List<Message> messages){
+  public void setMessages(List<Message> messages){
     mMessages = messages;
     notifyDataSetChanged();
   }

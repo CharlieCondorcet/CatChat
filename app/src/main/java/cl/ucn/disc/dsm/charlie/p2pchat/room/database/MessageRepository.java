@@ -10,16 +10,18 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cl.ucn.disc.dsm.charlie.p2pchat;
+package cl.ucn.disc.dsm.charlie.p2pchat.room.database;
 
 import android.app.Application;
 import androidx.lifecycle.LiveData;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
 import java.util.List;
 
 /**
  * @author Charlie Condorcet.
  */
-class MessageRepository {
+public class MessageRepository {
 
   private MessageDao mMessagedDao;
   private LiveData<List<Message>> mAllMessages;
@@ -28,7 +30,7 @@ class MessageRepository {
   // dependency. This adds complexity and much more code, and this sample is not about testing.
   // See the BasicSample in the android-architecture-components repository at
   // https://github.com/googlesamples
-  MessageRepository(Application application) {
+  public MessageRepository(Application application) {
     MessageRoomDatabase db = MessageRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
     this.mAllMessages = (LiveData<List<Message>>) this.mMessagedDao.getAlphabetizedMessages();
@@ -36,13 +38,13 @@ class MessageRepository {
 
   // Room executes all queries on a separate thread.
   // Observed LiveData will notify the observer when the data has changed.
-  LiveData<List<Message>> getmAllMessages() {
+  public LiveData<List<Message>> getmAllMessages() {
     return this.mAllMessages;
   }
 
   // You must call this on a non-UI thread or your app will throw an exception. Room ensures
   // that you're not doing any long running operations on the main thread, blocking the UI.
-  void insert(Message message) {
+  public void insert(Message message) {
     MessageRoomDatabase.databaseWriteExecutor.execute(() -> {
       this.mMessagedDao.insert(message);
     });
