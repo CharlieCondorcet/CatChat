@@ -9,5 +9,6 @@
   <string name="login_password">Password</string>
   <string name="login_btn_login">Login</string>
   <string name="login_btn_register">Register</string>
-  
+  <string name="logo_description">App\'s logo</string>
+
 </resources>
