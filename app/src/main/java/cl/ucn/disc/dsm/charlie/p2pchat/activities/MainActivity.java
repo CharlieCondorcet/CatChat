@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ChatUserViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageListAdapter;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     //When your Activity first starts, the ViewModelProviders will create the ViewModel
-    mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
+    this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
 
     // add an observer for the LiveData returned by getAlphabetizedMessages().
     //The onChanged() method fires when the observed data changes and the activity is in the foreground.
@@ -102,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
     cantMessages++;
   }
 
-  public void initLoginActivity(){
-    Intent login=new Intent(this, LoginActivity.class);
+  public void initLoginActivity() {
+    Intent login = new Intent(this, LoginActivity.class);
     startActivity(login);
   }
 

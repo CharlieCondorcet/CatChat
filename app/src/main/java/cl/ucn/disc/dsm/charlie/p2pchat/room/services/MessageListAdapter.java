@@ -56,7 +56,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
       holder.messageItemView.setText(current.getText());
     } else {
       // Covers the case of data not being ready yet.
-      holder.messageItemView.setText("No Word");
+      holder.messageItemView.setText("No Message");
     }
   }
 

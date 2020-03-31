@@ -30,7 +30,7 @@ import java.util.concurrent.Executors;
  *
  * @author Charlie Condorcet.
  */
-@Database(entities = {Message.class, ChatUser.class}, version = 1, exportSchema = false)
+@Database(entities = {Message.class, ChatUser.class}, version = 2, exportSchema = false)
 public abstract class ProyectRoomDatabase extends RoomDatabase {
 
   //Dao instance to Message
@@ -52,7 +52,7 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
       synchronized (ProyectRoomDatabase.class) {
         if (INSTANCE == null) {
           INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-              ProyectRoomDatabase.class, "message_database")
+              ProyectRoomDatabase.class, "proyect_database")
               .addCallback(sRoomDatabaseCallback)
               .build();
         }
