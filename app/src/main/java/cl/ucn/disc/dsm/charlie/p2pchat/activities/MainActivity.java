@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    //iniciar login activity.
+    initLoginActivity();
+
     //Show the data in the recycler view.
     RecyclerView recyclerView = findViewById(R.id.recyclerview);
     final MessageListAdapter adapter = new MessageListAdapter(this);
@@ -97,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
           Toast.LENGTH_LONG).show();
     }
     cantMessages++;
+  }
+
+  public void initLoginActivity(){
+    Intent login=new Intent(this, LoginActivity.class);
+    startActivity(login);
   }
 
 }
