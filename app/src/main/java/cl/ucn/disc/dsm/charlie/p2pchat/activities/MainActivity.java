@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     //iniciar login activity.
     initLoginActivity();
 
-    //Show the data in the recycler view.
+    //Show the data (messages) in the recycler view.
     RecyclerView recyclerView = findViewById(R.id.recyclerview);
     final MessageListAdapter adapter = new MessageListAdapter(this);
     recyclerView.setAdapter(adapter);

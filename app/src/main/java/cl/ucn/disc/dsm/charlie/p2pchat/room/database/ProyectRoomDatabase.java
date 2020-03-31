@@ -79,6 +79,17 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
         dao.insert(message);
         message = new Message(2, "Mundo", null, null, null, 0);
         dao.insert(message);
+
+        //Use the order from the corresponding table.
+        ChatUserDao chatUserDao = INSTANCE.chatUserDao();
+        chatUserDao.deleteAll();
+
+        //Add 2 users to example.
+        ChatUser user= new ChatUser("tommy", 123123, "tommy99@gmail.com", "HolaHola123");
+        chatUserDao.insert(user);
+        user= new ChatUser("camila", 999333, "camiflower31@aol.com", "12345678abC");
+        chatUserDao.insert(user);
+
       });
     }
   };
