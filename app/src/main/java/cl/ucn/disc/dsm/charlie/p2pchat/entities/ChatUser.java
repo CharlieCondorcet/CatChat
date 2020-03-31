@@ -28,7 +28,7 @@ public class ChatUser {
   /**
    * The Name.
    */
-  private final String Name;
+  private String Name;
 
   /**
    * The Id.
@@ -36,17 +36,17 @@ public class ChatUser {
   @PrimaryKey
   @NonNull
   @ColumnInfo(name = "chat_user")
-  private final int Id;
+  private int Id;
 
   /**
    * The Email.
    */
-  private final String Email;
+  private String Email;
 
   /**
    * The Password.
    */
-  private final String Password;
+  private String Password;
 
   /**
    * The Constructor.
@@ -56,11 +56,11 @@ public class ChatUser {
    * @param Email.
    * @param Password.
    */
-  public ChatUser(String name, int id, String email, String password) {
-    this.Name = name;
-    this.Id = id;
-    this.Email = email;
-    this.Password = password;
+  public ChatUser(String Name, int Id, String Email, String Password) {
+    this.Name = Name;
+    this.Id = Id;
+    this.Email = Email;
+    this.Password = Password;
   }
 
   /**
@@ -91,5 +91,13 @@ public class ChatUser {
     return Password;
   }
 
+
+  public void setName(String name) { Name = name; }
+
+  public void setId(int id) { Id = id; }
+
+  public void setEmail(String email) { Email = email; }
+
+  public void setPassword(String password) { Password = password; }
 
 }
