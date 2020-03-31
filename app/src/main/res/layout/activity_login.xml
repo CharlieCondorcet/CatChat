@@ -53,7 +53,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     android:contentDescription="@string/logo_description"
-    app:srcCompat="@drawable/cat_chat_preview_icon1" />
+    app:srcCompat="@drawable/logo_catchat_rojo_azul" />
   <Button
     android:id="@+id/button"
     android:layout_width="200dp"
