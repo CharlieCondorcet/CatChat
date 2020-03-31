@@ -12,11 +12,17 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat.entities;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * The User class.
  *
  * @author Charlie Condorcet.
  */
+@Entity(tableName = "user_table")
 public class ChatUser {
 
   /**
@@ -26,7 +32,10 @@ public class ChatUser {
 
   /**
    * The Id.
-   */
+   */ 
+  @PrimaryKey
+  @NonNull
+  @ColumnInfo(name="charuser")
   private final int Id;
 
   /**
