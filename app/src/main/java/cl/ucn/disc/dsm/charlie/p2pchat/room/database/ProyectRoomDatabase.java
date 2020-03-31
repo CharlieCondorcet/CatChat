@@ -18,32 +18,41 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * The RoomDataBase class to instance the data base to the complete Room.
+ *
  * @author Charlie Condorcet.
  */
-@Database(entities = {Message.class}, version = 1, exportSchema = false)
-public abstract class MessageRoomDatabase extends RoomDatabase {
+@Database(entities = {Message.class, ChatUser.class}, version = 1, exportSchema = false)
+public abstract class ProyectRoomDatabase extends RoomDatabase {
 
+  //Dao instance to Message
   public abstract MessageDao messageDao();
 
-  private static volatile MessageRoomDatabase INSTANCE;
+  //Dao instance to ChatUser
+  public abstract ChatUserDao chatUserDao();
+
+  private static volatile ProyectRoomDatabase INSTANCE;
 
   private static final int NUMBER_OF_THREADS = 4;
 
   static final ExecutorService databaseWriteExecutor =
       Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-  static MessageRoomDatabase getDatabase(final Context context) {
+  //Create the database to Room.
+  static ProyectRoomDatabase getDatabase(final Context context) {
     if (INSTANCE == null) {
-      synchronized (MessageRoomDatabase.class) {
+      synchronized (ProyectRoomDatabase.class) {
         if (INSTANCE == null) {
           INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-              MessageRoomDatabase.class, "message_database")
+              ProyectRoomDatabase.class, "message_database")
               .addCallback(sRoomDatabaseCallback)
               .build();
         }

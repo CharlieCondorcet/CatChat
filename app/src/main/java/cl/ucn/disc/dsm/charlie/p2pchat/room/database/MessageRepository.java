@@ -31,7 +31,7 @@ public class MessageRepository {
   // See the BasicSample in the android-architecture-components repository at
   // https://github.com/googlesamples
   public MessageRepository(Application application) {
-    MessageRoomDatabase db = MessageRoomDatabase.getDatabase(application);
+    ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
     this.mAllMessages = (LiveData<List<Message>>) this.mMessagedDao.getAlphabetizedMessages();
   }
@@ -45,7 +45,7 @@ public class MessageRepository {
   // You must call this on a non-UI thread or your app will throw an exception. Room ensures
   // that you're not doing any long running operations on the main thread, blocking the UI.
   public void insert(Message message) {
-    MessageRoomDatabase.databaseWriteExecutor.execute(() -> {
+    ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
       this.mMessagedDao.insert(message);
     });
   }

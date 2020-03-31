@@ -35,7 +35,7 @@ public class ChatUser {
    */
   @PrimaryKey
   @NonNull
-  @ColumnInfo(name="chat_user")
+  @ColumnInfo(name = "chat_user")
   private final int Id;
 
   /**
@@ -90,4 +90,6 @@ public class ChatUser {
   public String getPassword() {
     return Password;
   }
+
+
 }
