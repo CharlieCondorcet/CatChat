@@ -22,7 +22,7 @@ import androidx.room.PrimaryKey;
  *
  * @author Charlie Condorcet.
  */
-@Entity(tableName = "user_table")
+@Entity(tableName = "chat_user_table")
 public class ChatUser {
 
   /**
@@ -32,10 +32,10 @@ public class ChatUser {
 
   /**
    * The Id.
-   */ 
+   */
   @PrimaryKey
   @NonNull
-  @ColumnInfo(name="charuser")
+  @ColumnInfo(name="chat_user")
   private final int Id;
 
   /**
