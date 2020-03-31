@@ -12,11 +12,30 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat.room.services;
 
+import android.app.Application;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ChatUserRepository;
+import java.util.List;
+
 /**
  * @author Charlie Condorcet.
  */
-public class ChatUserViewModel {
+public class ChatUserViewModel extends AndroidViewModel {
 
+  private ChatUserRepository mRepository;
 
+  private LiveData<List<ChatUser>> mAllChatUsers;
+
+  public ChatUserViewModel (Application application) {
+    super(application);
+    mRepository = new ChatUserRepository(application);
+    mAllChatUsers = mRepository.getAllChatUsers();
+  }
+
+  LiveData<List<ChatUser>> getAllChatUsers() { return mAllChatUsers; }
+
+  public void insert(ChatUser chatUser) { mRepository.insert(chatUser); }
 
 }

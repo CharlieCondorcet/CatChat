@@ -31,7 +31,7 @@ public class ChatUserRepository {
   // dependency. This adds complexity and much more code, and this sample is not about testing.
   // See the BasicSample in the android-architecture-components repository at
   // https://github.com/googlesamples
-  ChatUserRepository(Application application) {
+  public ChatUserRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     mChatUserDao = db.chatUserDao();
     mAllChatUsers = mChatUserDao.getAlphabetizedChatUsers();
@@ -39,13 +39,13 @@ public class ChatUserRepository {
 
   // Room executes all queries on a separate thread.
   // Observed LiveData will notify the observer when the data has changed.
-  LiveData<List<ChatUser>> getAllChatUsers() {
+  public LiveData<List<ChatUser>> getAllChatUsers() {
     return mAllChatUsers;
   }
 
   // You must call this on a non-UI thread or your app will throw an exception. Room ensures
   // that you're not doing any long running operations on the main thread, blocking the UI.
-  void insert(ChatUser chatUser) {
+  public void insert(ChatUser chatUser) {
     ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
       mChatUserDao.insert(chatUser);
     });
