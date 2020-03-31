@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
 
+
 public class LoginActivity extends AppCompatActivity {
 
   @Override
