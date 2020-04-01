@@ -35,7 +35,20 @@ public class LoginActivity extends AppCompatActivity {
 
     this.email=(EditText)findViewById(R.id.et_e_email);
     this.password=(EditText)findViewById(R.id.et_p_password);
+    
+  }
 
+  public void verifyAccount(View view){
+    String str_email=this.email.getText().toString();
+    String str_pass=this.password.getText().toString();
+
+
+    if(str_email.equals("jazmin") && str_pass.equals("Gatos123")){
+      Toast.makeText(this,"ingresando...", Toast.LENGTH_LONG );
+      finish();
+    }else{
+      Toast.makeText(this,"datos erroneos...", Toast.LENGTH_LONG );
+    }
   }
 
 }
