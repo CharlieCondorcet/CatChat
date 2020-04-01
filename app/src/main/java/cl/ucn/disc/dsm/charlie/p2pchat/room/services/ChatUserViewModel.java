@@ -30,11 +30,11 @@ public class ChatUserViewModel extends AndroidViewModel {
 
   public ChatUserViewModel (Application application) {
     super(application);
-    mRepository = new ChatUserRepository(application);
-    mAllChatUsers = mRepository.getAllChatUsers();
+    this.mRepository = new ChatUserRepository(application);
+    mAllChatUsers = this.mRepository.getAllChatUsers();
   }
 
-  List<ChatUser> getAllChatUsers() { return mAllChatUsers; }
+  public List<ChatUser> getAllChatUsers() { return mAllChatUsers; }
 
   public void insert(ChatUser chatUser) { mRepository.insert(chatUser); }
 

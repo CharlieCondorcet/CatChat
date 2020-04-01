@@ -17,14 +17,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ChatUserRepository;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ChatUserViewModel;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 
 public class LoginActivity extends AppCompatActivity {
 
+  //private ChatUserViewModel chatUserViewModel;
+  private ChatUserRepository chatUserRepository;
   private EditText email;
   private EditText password;
 
@@ -33,22 +47,31 @@ public class LoginActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
 
-    this.email=(EditText)findViewById(R.id.et_e_email);
-    this.password=(EditText)findViewById(R.id.et_p_password);
+    this.email = (EditText) findViewById(R.id.et_e_email);
+    this.password = (EditText) findViewById(R.id.et_p_password);
+
+    //this.chatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
 
   }
 
-  public void verifyAccount(View view){
-    String str_email=this.email.getText().toString();
-    String str_pass=this.password.getText().toString();
+  public void verifyAccount(View view) {
+    String str_email = this.email.getText().toString();
+    String str_pass = this.password.getText().toString();
 
+    List<ChatUser> users = this.chatUserRepository.getAllChatUsers();
 
-    if(str_email.equals("jazmin") && str_pass.equals("Gatos123")){
-      Toast.makeText(this,"ingresando...", Toast.LENGTH_LONG );
-      finish();
-    }else{
-      Toast.makeText(this,"datos erroneos...", Toast.LENGTH_LONG );
+    for (int i = 0; i < users.size(); i++) {
+      if (str_email.equals(users.get(i).getEmail()) && str_pass
+          .equals(users.get(i).getPassword())) {
+        //Toast.makeText(this, "cuenta verificada!", Toast.LENGTH_SHORT);
+        finish();
+      } else {
+        //Toast.makeText(this, "el correo proporcionado o la contrasenia no se reconocen!",
+          //  Toast.LENGTH_SHORT);
+      }
     }
+
+
   }
 
 }

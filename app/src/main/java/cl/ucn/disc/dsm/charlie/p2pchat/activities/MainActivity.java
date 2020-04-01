@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
   private int cantMessages = 3;
 
-  //If the activity returns with RESULT_OK, insert the returned word into the database by calling the insert() method of the WordViewModel.
+  //If the activity returns with RESULT_OK, insert the returned word into the
+  // database by calling the insert() method of the WordViewModel.
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
