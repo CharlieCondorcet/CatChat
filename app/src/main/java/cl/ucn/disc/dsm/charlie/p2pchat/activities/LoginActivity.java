@@ -64,12 +64,12 @@ public class LoginActivity extends AppCompatActivity {
       try{
         if (str_email.equals(users.get(i).getEmail()) && str_pass
             .equals(users.get(i).getPassword())) {
-          Toast.makeText(this, "cuenta verificada!", Toast.LENGTH_SHORT);
+          Toast.makeText(this, "cuenta verificada!", Toast.LENGTH_SHORT).show();
           Intent intent = new Intent(this, MainActivity.class);
           startActivity(intent);
         } else {
           Toast.makeText(this, "el correo proporcionado o la contrasenia no se reconocen!",
-              Toast.LENGTH_SHORT);
+              Toast.LENGTH_SHORT).show();
         }
       }catch (Exception e){
         System.console().printf("error: "+e);
