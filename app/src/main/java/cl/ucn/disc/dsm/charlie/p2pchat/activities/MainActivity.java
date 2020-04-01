@@ -46,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    //iniciar login activity.
-    initLoginActivity();
 
     //Show the data (messages) in the recycler view.
     RecyclerView recyclerView = findViewById(R.id.recyclerview);
@@ -77,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
       }
     });
+
+
 
   }
 

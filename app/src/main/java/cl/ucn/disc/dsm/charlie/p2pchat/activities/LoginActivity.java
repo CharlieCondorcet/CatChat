@@ -12,6 +12,7 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat.activities;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,14 +62,20 @@ public class LoginActivity extends AppCompatActivity {
     List<ChatUser> users = this.chatUserRepository.getAllChatUsers();
 
     for (int i = 0; i < users.size(); i++) {
-      if (str_email.equals(users.get(i).getEmail()) && str_pass
-          .equals(users.get(i).getPassword())) {
-        //Toast.makeText(this, "cuenta verificada!", Toast.LENGTH_SHORT);
-        finish();
-      } else {
-        //Toast.makeText(this, "el correo proporcionado o la contrasenia no se reconocen!",
-          //  Toast.LENGTH_SHORT);
+      try{
+        if (str_email.equals(users.get(i).getEmail()) && str_pass
+            .equals(users.get(i).getPassword())) {
+          Toast.makeText(this, "cuenta verificada!", Toast.LENGTH_SHORT);
+          Intent intent = new Intent(this, MainActivity.class);
+          startActivity(intent);
+        } else {
+          Toast.makeText(this, "el correo proporcionado o la contrasenia no se reconocen!",
+              Toast.LENGTH_SHORT);
+        }
+      }catch (Exception e){
+        System.console().printf("error: "+e);
       }
+
     }
 
 
