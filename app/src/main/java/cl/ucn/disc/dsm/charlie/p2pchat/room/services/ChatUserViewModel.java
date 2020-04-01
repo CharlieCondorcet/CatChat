@@ -26,7 +26,7 @@ public class ChatUserViewModel extends AndroidViewModel {
 
   private ChatUserRepository mRepository;
 
-  private LiveData<List<ChatUser>> mAllChatUsers;
+  private List<ChatUser> mAllChatUsers;
 
   public ChatUserViewModel (Application application) {
     super(application);
@@ -34,7 +34,7 @@ public class ChatUserViewModel extends AndroidViewModel {
     mAllChatUsers = mRepository.getAllChatUsers();
   }
 
-  LiveData<List<ChatUser>> getAllChatUsers() { return mAllChatUsers; }
+  List<ChatUser> getAllChatUsers() { return mAllChatUsers; }
 
   public void insert(ChatUser chatUser) { mRepository.insert(chatUser); }
 

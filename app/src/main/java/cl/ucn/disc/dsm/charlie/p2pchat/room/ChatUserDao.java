@@ -36,6 +36,6 @@ public interface ChatUserDao {
   void deleteAll();
 
   @Query("SELECT * from chat_user_table ORDER BY chat_user ASC")
-  LiveData<List<ChatUser>> getAlphabetizedChatUsers();
+  List<ChatUser> getAlphabetizedChatUsers();
 
 }

@@ -25,7 +25,7 @@ import java.util.List;
 public class ChatUserRepository {
 
   private ChatUserDao mChatUserDao;
-  private LiveData<List<ChatUser>> mAllChatUsers;
+  private List<ChatUser> mAllChatUsers;
 
   // Note that in order to unit test the WordRepository, you have to remove the Application
   // dependency. This adds complexity and much more code, and this sample is not about testing.
@@ -39,7 +39,7 @@ public class ChatUserRepository {
 
   // Room executes all queries on a separate thread.
   // Observed LiveData will notify the observer when the data has changed.
-  public LiveData<List<ChatUser>> getAllChatUsers() {
+  public List<ChatUser> getAllChatUsers() {
     return mAllChatUsers;
   }
 

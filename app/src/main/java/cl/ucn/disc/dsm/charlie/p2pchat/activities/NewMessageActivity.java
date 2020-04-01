@@ -23,7 +23,7 @@ import cl.ucn.disc.dsm.charlie.p2pchat.R;
 
 public class NewMessageActivity extends AppCompatActivity {
 
-  public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
+  public static final String EXTRA_REPLY = "com.example.android.messagelistsql.REPLY";
 
   private EditText mEditMessageView;
 
