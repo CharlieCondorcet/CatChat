@@ -38,8 +38,7 @@ import java.util.ListIterator;
 
 public class LoginActivity extends AppCompatActivity {
 
-  //private ChatUserViewModel chatUserViewModel;
-  private ChatUserRepository chatUserRepository;
+  private ChatUserViewModel chatUserViewModel;
   private EditText email;
   private EditText password;
 
@@ -48,10 +47,10 @@ public class LoginActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
 
+    this.chatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
+
     this.email = (EditText) findViewById(R.id.et_e_email);
     this.password = (EditText) findViewById(R.id.et_p_password);
-
-    //this.chatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
 
   }
 
@@ -59,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
     String str_email = this.email.getText().toString();
     String str_pass = this.password.getText().toString();
 
-    List<ChatUser> users = this.chatUserRepository.getAllChatUsers();
+    List<ChatUser> users = this.chatUserViewModel.getAllChatUsers();
 
     for (int i = 0; i < users.size(); i++) {
       try{

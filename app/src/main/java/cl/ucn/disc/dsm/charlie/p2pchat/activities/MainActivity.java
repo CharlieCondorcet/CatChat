@@ -76,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-
-
   }
 
   private int cantMessages = 3;
@@ -102,11 +100,6 @@ public class MainActivity extends AppCompatActivity {
           Toast.LENGTH_LONG).show();
     }
     cantMessages++;
-  }
-
-  public void initLoginActivity() {
-    Intent login = new Intent(this, LoginActivity.class);
-    startActivity(login);
   }
 
 }

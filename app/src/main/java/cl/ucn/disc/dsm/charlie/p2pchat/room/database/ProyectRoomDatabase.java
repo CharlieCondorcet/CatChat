@@ -72,13 +72,7 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
       databaseWriteExecutor.execute(() -> {
         // Populate the database in the background.
         // If you want to start with more words, just add them.
-        MessageDao dao = INSTANCE.messageDao();
-        dao.deleteAll();
 
-        Message message = new Message(1, "Hola", null, null, null, 0);
-        dao.insert(message);
-        message = new Message(2, "Mundo", null, null, null, 0);
-        dao.insert(message);
 
         //Use the order from the corresponding table.
         ChatUserDao chatUserDao = INSTANCE.chatUserDao();
