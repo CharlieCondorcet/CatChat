@@ -13,10 +13,68 @@
 package cl.ucn.disc.dsm.charlie.p2pchat.entities;
 
 /**
- * The Conversation class to join entities ChatUser and Message.
+ * The Conversation class to join 2 entities ChatUser.
  *
  * @author Charlie Condorcet.
  */
 public class Conversation {
 
+  private int IdConversation;
+  private int IdFirstUser;
+  private int IdSecondUser;
+
+  /**
+   * The Constructor.
+   *
+   * @param IdConversation
+   * @param IdFirstUser
+   * @param IdSecondUser
+   */
+  public Conversation(int IdConversation, int IdFirstUser, int IdSecondUser) {
+    IdConversation = IdConversation;
+    IdFirstUser = IdFirstUser;
+    IdSecondUser = IdSecondUser;
+  }
+
+  /**
+   * @return The IdConversation.
+   */
+  public int getIdConversation() {
+    return IdConversation;
+  }
+
+  /**
+   * @return The IdFirstUser.
+   */
+  public int getIdFirstUser() {
+    return IdFirstUser;
+  }
+
+  /**
+   * @return The IdSecondUser.
+   */
+  public int getIdSecondUser() {
+    return IdSecondUser;
+  }
+
+  /**
+   * @param idConversation
+   */
+  public void setIdConversation(int idConversation) {
+    IdConversation = idConversation;
+  }
+
+  /**
+   * @param idFirstUser
+   */
+  public void setIdFirstUser(int idFirstUser) {
+    IdFirstUser = idFirstUser;
+  }
+
+  /**
+   * @param idSecondUser
+   */
+  public void setIdSecondUser(int idSecondUser) {
+    IdSecondUser = idSecondUser;
+  }
 }
