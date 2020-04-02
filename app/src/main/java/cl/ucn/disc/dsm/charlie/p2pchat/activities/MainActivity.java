@@ -45,15 +45,14 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-
     //Show the data (messages) in the recycler view.
     RecyclerView recyclerView = findViewById(R.id.recyclerview);
     final MessageListAdapter adapter = new MessageListAdapter(this);
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-    this.mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
+    //When your Activity first starts, the ViewModelProviders will create the ViewModel
+    mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
 
     // add an observer for the LiveData returned by getAlphabetizedMessages().
     //The onChanged() method fires when the observed data changes and the activity is in the foreground.
@@ -91,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
           null,
           null,
           0);
-      mProyectViewModel.insert(message);
+      mProyectViewModel.insertMessage(message);
     } else {
       Toast.makeText(
           getApplicationContext(),

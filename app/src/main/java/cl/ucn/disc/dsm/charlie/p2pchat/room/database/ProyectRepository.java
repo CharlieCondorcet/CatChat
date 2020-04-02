@@ -29,7 +29,7 @@ public class ProyectRepository {
   private ChatUserDao mChatUrserDao;
 
   private LiveData<List<Message>> mAllMessages;
-  private List<ChatUser> mAllChatUser;
+  private LiveData<List<ChatUser>> mAllChatUser;
 
   // Note that in order to unit test the WordRepository, you have to remove the Application
   // dependency. This adds complexity and much more code, and this sample is not about testing.
@@ -39,8 +39,9 @@ public class ProyectRepository {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
     this.mChatUrserDao = (ChatUserDao) db.chatUserDao();
+
     this.mAllMessages = (LiveData<List<Message>>) this.mMessagedDao.getAlphabetizedMessages();
-    this.mAllChatUser = (List<ChatUser>) this.mChatUrserDao.getAlphabetizedChatUsers();
+    this.mAllChatUser = (LiveData<List<ChatUser>>) this.mChatUrserDao.getAlphabetizedChatUsers();
   }
 
   // Room executes all queries on a separate thread.
@@ -50,18 +51,18 @@ public class ProyectRepository {
   }
 
   //to return from repository the allChatUser.
-  public List<ChatUser> getmAllChatUser(){ return this.mAllChatUser; }
+  public LiveData<List<ChatUser>> getmAllChatUser(){ return this.mAllChatUser; }
 
   // You must call this on a non-UI thread or your app will throw an exception. Room ensures
   // that you're not doing any long running operations on the main thread, blocking the UI.
-  public void insert(Message message) {
+  public void insertMessage(Message message) {
     ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
       this.mMessagedDao.insert(message);
     });
   }
 
   //add ChatUser insert to unique database instance.
-  public void insert(ChatUser chatUser){
+  public void insertChatUser(ChatUser chatUser){
     ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
       this.mChatUrserDao.insert(chatUser);
     });

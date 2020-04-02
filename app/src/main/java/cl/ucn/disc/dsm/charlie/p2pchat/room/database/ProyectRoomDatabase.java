@@ -30,7 +30,7 @@ import java.util.concurrent.Executors;
  *
  * @author Charlie Condorcet.
  */
-@Database(entities = {Message.class, ChatUser.class}, version = 10, exportSchema = false)
+@Database(entities = {Message.class, ChatUser.class}, version = 100, exportSchema = false)
 public abstract class ProyectRoomDatabase extends RoomDatabase {
 
   //Dao instance to Message
@@ -73,6 +73,13 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
         // Populate the database in the background.
         // If you want to start with more words, just add them.
 
+        MessageDao dao = INSTANCE.messageDao();
+        dao.deleteAll();
+
+        Message message = new Message(1,"Hello", null, null,null, 0);
+        dao.insert(message);
+        message = new Message(2,"World", null, null, null,0);
+        dao.insert(message);
 
         //Use the order from the corresponding table.
         ChatUserDao chatUserDao = INSTANCE.chatUserDao();

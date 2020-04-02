@@ -34,7 +34,7 @@ public class ProyectViewModel extends AndroidViewModel {
   private LiveData<List<Message>> mAllMessages;
 
   //attribute with all CharUsers of this ViewModel.
-  private List<ChatUser> mAllChatUser;
+  private LiveData<List<ChatUser>> mAllChatUser;
 
   public ProyectViewModel(Application application) {
     super(application);
@@ -48,14 +48,14 @@ public class ProyectViewModel extends AndroidViewModel {
     return mAllMessages;
   }
 
-  public  List<ChatUser> getmAllChatUser() { return mAllChatUser; }
+  public LiveData<List<ChatUser>> getmAllChatUser() { return mAllChatUser; }
 
   //insert into repository a message object.
-  public void insert(Message message) {
-    mRepository.insert(message);
+  public void insertMessage(Message message) {
+    mRepository.insertMessage(message);
   }
 
   //insert into repository a chatuser object.
-  public void insert(ChatUser chatUser) { mRepository.insert(chatUser);}
+  public void insertChatUser(ChatUser chatUser) { mRepository.insertChatUser(chatUser);}
 
 }
