@@ -23,6 +23,8 @@
         android:endColor="#150D93"
         android:type="linear" />
 
+      <corners android:radius="50dp"/>
+
     </shape>
 
   </item>
