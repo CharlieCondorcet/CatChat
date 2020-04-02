@@ -40,6 +40,6 @@ public interface ChatUserDao {
 
   //Request all ChatUsers.
   @Query("SELECT * from chat_user_table ORDER BY chat_user ASC")
-  List<ChatUser> getAlphabetizedChatUsers();
+  List<ChatUser> getAllChatUsers();
 
 }

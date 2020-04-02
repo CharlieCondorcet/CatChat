@@ -13,8 +13,6 @@
 package cl.ucn.disc.dsm.charlie.p2pchat.room.database;
 
 import android.app.Application;
-import androidx.lifecycle.LiveData;
-import androidx.room.RoomDatabase;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
 import java.util.List;
@@ -34,7 +32,7 @@ public class ChatUserRepository {
   public ChatUserRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     mChatUserDao = db.chatUserDao();
-    mAllChatUsers = mChatUserDao.getAlphabetizedChatUsers();
+    mAllChatUsers = mChatUserDao.getAllChatUsers();
   }
 
   // Room executes all queries on a separate thread.

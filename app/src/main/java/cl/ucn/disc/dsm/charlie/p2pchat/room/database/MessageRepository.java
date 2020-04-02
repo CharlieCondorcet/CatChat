@@ -14,17 +14,30 @@ package cl.ucn.disc.dsm.charlie.p2pchat.room.database;
 
 import android.app.Application;
 import androidx.lifecycle.LiveData;
+import checkers.units.quals.C;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.ConversationDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
 import java.util.List;
 
 /**
+ * The Repository class to comunicate the DB with the application interface.
+ *
  * @author Charlie Condorcet.
  */
 public class MessageRepository {
 
   private MessageDao mMessagedDao;
   private LiveData<List<Message>> mAllMessages;
+
+  private ChatUserDao mChatUserDao;
+  private List<ChatUser> mAllChatUsers;
+
+  private ConversationDao mConversation;
+  private List<Conversation> mAllConversations;
 
   // Note that in order to unit test the WordRepository, you have to remove the Application
   // dependency. This adds complexity and much more code, and this sample is not about testing.
@@ -34,6 +47,8 @@ public class MessageRepository {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
     this.mAllMessages = (LiveData<List<Message>>) this.mMessagedDao.getAlphabetizedMessages();
+    this.mAllChatUsers = (List<ChatUser>) this.mChatUserDao.getAllChatUsers();
+    this.mAllConversations = (List<Conversation>) this.mConversation.getAllConversation();
   }
 
   // Room executes all queries on a separate thread.
@@ -42,11 +57,36 @@ public class MessageRepository {
     return this.mAllMessages;
   }
 
+  //Return the List with all ChatUsers.
+  public List<ChatUser> getAllChatUsers() {
+    return mAllChatUsers;
+  }
+
+  //Return the List with all Conversations.
+  public List<Conversation> getAllConversations() {
+    return mAllConversations;
+  }
+
+
   // You must call this on a non-UI thread or your app will throw an exception. Room ensures
   // that you're not doing any long running operations on the main thread, blocking the UI.
-  public void insert(Message message) {
+  public void insertMessage(Message message) {
     ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
       this.mMessagedDao.insert(message);
+    });
+  }
+
+  //Apply the insert function to add a ChatUser.
+  public void insertChatUser(ChatUser chatUser) {
+    ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
+      this.mChatUserDao.insert(chatUser);
+    });
+  }
+
+  //Apply the insert function to add a Conversation.
+  public void insertConversation(Conversation conversation) {
+    ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
+      this.mConversation.insert(conversation);
     });
   }
 
