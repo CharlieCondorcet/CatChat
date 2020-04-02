@@ -16,7 +16,7 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.database.MessageRepository;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ProyectRepository;
 import java.util.List;
 
 /**
@@ -26,13 +26,13 @@ import java.util.List;
  */
 public class MessageViewModel extends AndroidViewModel {
 
-  private MessageRepository mRepository;
+  private ProyectRepository mRepository;
 
   private LiveData<List<Message>> mAllMessages;
 
   public MessageViewModel(Application application) {
     super(application);
-    mRepository = new MessageRepository(application);
+    mRepository = new ProyectRepository(application);
     mAllMessages = mRepository.getmAllMessages();
   }
 

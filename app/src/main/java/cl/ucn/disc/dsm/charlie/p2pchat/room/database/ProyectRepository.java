@@ -14,26 +14,33 @@ package cl.ucn.disc.dsm.charlie.p2pchat.room.database;
 
 import android.app.Application;
 import androidx.lifecycle.LiveData;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
 import java.util.List;
 
 /**
  * @author Charlie Condorcet.
  */
-public class MessageRepository {
+public class ProyectRepository {
 
   private MessageDao mMessagedDao;
+  private ChatUserDao mChatUrserDao;
+
   private LiveData<List<Message>> mAllMessages;
+  private List<ChatUser> mAllChatUser;
 
   // Note that in order to unit test the WordRepository, you have to remove the Application
   // dependency. This adds complexity and much more code, and this sample is not about testing.
   // See the BasicSample in the android-architecture-components repository at
   // https://github.com/googlesamples
-  public MessageRepository(Application application) {
+  public ProyectRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
+    this.mChatUrserDao = (ChatUserDao) db.chatUserDao();
     this.mAllMessages = (LiveData<List<Message>>) this.mMessagedDao.getAlphabetizedMessages();
+    this.mAllChatUser = (List<ChatUser>) this.mChatUrserDao.getAlphabetizedChatUsers();
   }
 
   // Room executes all queries on a separate thread.
@@ -42,11 +49,21 @@ public class MessageRepository {
     return this.mAllMessages;
   }
 
+  //to return from repository the allChatUser.
+  public List<ChatUser> getmAllChatUser(){ return this.mAllChatUser; }
+
   // You must call this on a non-UI thread or your app will throw an exception. Room ensures
   // that you're not doing any long running operations on the main thread, blocking the UI.
   public void insert(Message message) {
     ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
       this.mMessagedDao.insert(message);
+    });
+  }
+
+  //add ChatUser insert to unique database instance.
+  public void insert(ChatUser chatUser){
+    ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
+      this.mChatUrserDao.insert(chatUser);
     });
   }
 
