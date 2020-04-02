@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Charlie Condorcet.
  */
-public class MessageRepository {
+public class ProyectRepository {
 
   /**
    * The MessagenDao.
@@ -72,7 +72,7 @@ public class MessageRepository {
   // dependency. This adds complexity and much more code, and this sample is not about testing.
   // See the BasicSample in the android-architecture-components repository at
   // https://github.com/googlesamples
-  public MessageRepository(Application application) {
+  public ProyectRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
 

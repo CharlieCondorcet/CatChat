@@ -12,28 +12,10 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat.activities;
 
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProvider;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
-import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ChatUserRepository;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ChatUserViewModel;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 
 public class LoginActivity extends AppCompatActivity {

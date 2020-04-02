@@ -18,7 +18,7 @@ import androidx.lifecycle.LiveData;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.database.MessageRepository;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ProyectRepository;
 import java.util.List;
 
 /**
@@ -26,12 +26,12 @@ import java.util.List;
  *
  * @author Charlie Condorcet.
  */
-public class MessageViewModel extends AndroidViewModel {
+public class ProyectViewModel extends AndroidViewModel {
 
   /**
    * Unique repository of the proyect to create and get entities.
    */
-  private final MessageRepository mRepository;
+  private final ProyectRepository mRepository;
 
   /**
    * All Messages instanced in this ModelView to send to Activity.
@@ -50,9 +50,9 @@ public class MessageViewModel extends AndroidViewModel {
 
 
   //ChatDisc ViewModel constructor to get all entities added.
-  public MessageViewModel(Application application) {
+  public ProyectViewModel(Application application) {
     super(application);
-    mRepository = new MessageRepository(application);
+    mRepository = new ProyectRepository(application);
     this.mAllMessages = mRepository.getmAllMessages();
     this.mAllChatUsers = mRepository.getAllChatUsers();
     this.mAllConversations = mRepository.getAllConversations();
