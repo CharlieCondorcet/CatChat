@@ -23,9 +23,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ChatUserViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageListAdapter;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ProyectViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
@@ -37,7 +36,7 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
 
-  private MessageViewModel mMessageViewModel;
+  private ProyectViewModel mProyectViewModel;
 
   public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
@@ -54,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     //When your Activity first starts, the ViewModelProviders will create the ViewModel
-    this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
+    this.mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
 
     // add an observer for the LiveData returned by getAlphabetizedMessages().
     //The onChanged() method fires when the observed data changes and the activity is in the foreground.
-    mMessageViewModel.getAllMessages().observe(this, new Observer<List<Message>>() {
+    mProyectViewModel.getAllMessages().observe(this, new Observer<List<Message>>() {
       @Override
       public void onChanged(@Nullable final List<Message> messages) {
         // Update the cached copy of the words in the adapter.
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
           null,
           null,
           0);
-      mMessageViewModel.insert(message);
+      mProyectViewModel.insert(message);
     } else {
       Toast.makeText(
           getApplicationContext(),

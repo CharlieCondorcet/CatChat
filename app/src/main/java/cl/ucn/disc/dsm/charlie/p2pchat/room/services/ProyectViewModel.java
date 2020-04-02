@@ -15,6 +15,7 @@ package cl.ucn.disc.dsm.charlie.p2pchat.room.services;
 import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ProyectRepository;
 import java.util.List;
@@ -24,24 +25,37 @@ import java.util.List;
  *
  * @author Charlie Condorcet.
  */
-public class MessageViewModel extends AndroidViewModel {
+public class ProyectViewModel extends AndroidViewModel {
 
+  //the instance of ProtectRepository.
   private ProyectRepository mRepository;
 
+  //atribute with all Messages of this ViewModel.
   private LiveData<List<Message>> mAllMessages;
 
-  public MessageViewModel(Application application) {
+  //atribute with all CharUsers of this ViewModel.
+  private List<ChatUser> mAllChatUser;
+
+  public ProyectViewModel(Application application) {
     super(application);
     mRepository = new ProyectRepository(application);
     mAllMessages = mRepository.getmAllMessages();
+    mAllChatUser = mRepository.getmAllChatUser();
   }
+
 
   public LiveData<List<Message>> getAllMessages() {
     return mAllMessages;
   }
 
+  public  List<ChatUser> getmAllChatUser() { return mAllChatUser; }
+
+  //insert into repository a message object.
   public void insert(Message message) {
     mRepository.insert(message);
   }
+
+  //insert into repository a chatuser object.
+  public void insert(ChatUser chatUser) { mRepository.insert(chatUser);}
 
 }
