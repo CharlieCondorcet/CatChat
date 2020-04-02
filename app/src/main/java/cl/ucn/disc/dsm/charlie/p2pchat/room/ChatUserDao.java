@@ -22,6 +22,8 @@ import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import java.util.List;
 
 /**
+ * The DAO to ChatUser class.
+ *
  * @author Charlie Condorcet.
  */
 @Dao
@@ -32,9 +34,11 @@ public interface ChatUserDao {
   @Insert(onConflict = OnConflictStrategy.IGNORE)
   void insert(ChatUser chatUser);
 
+  //Delete all Conversations.
   @Query("DELETE FROM chat_user_table")
   void deleteAll();
 
+  //Request all ChatUsers.
   @Query("SELECT * from chat_user_table ORDER BY chat_user ASC")
   List<ChatUser> getAlphabetizedChatUsers();
 

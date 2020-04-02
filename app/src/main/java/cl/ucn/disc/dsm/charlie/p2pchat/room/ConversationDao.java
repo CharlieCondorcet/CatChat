@@ -12,11 +12,33 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat.room;
 
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
+import java.util.List;
+
 /**
+ * The DAO to Conversation class.
+ *
  * @author Charlie Condorcet.
  */
+@Dao
 public interface ConversationDao {
 
+  //add a Conversation.
+  //TODO: change the @Insert without OnConflictStrategy
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
+  void insert(Conversation conversation);
 
+  //delete all Conversations.
+  @Query("DELETE FROM conversation_table")
+  void deleteAll();
+
+  //Request all Conversations.
+  @Query("SELECT * from conversation_table")
+  List<Conversation> getAllConversation();
 
 }

@@ -21,19 +21,24 @@ import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import java.util.List;
 
 /**
+ * The DAO to Message class.
+ *
  * @author Charlie Condorcet.
  */
 @Dao
 public interface MessageDao {
 
-  // allowing the insert of the same word multiple times by passing a
+  // Allowing the insert of the same word multiple times by passing a
   // conflict resolution strategy.
+  //TODO: update the OnConflictStrategy becose is not a PK.
   @Insert(onConflict = OnConflictStrategy.IGNORE)
   void insert(Message message);
 
+  //Delete all Conversations.
   @Query("DELETE FROM message_table")
   void deleteAll();
 
+  //Request all ChatUsers in a LiveData.
   @Query("SELECT * from message_table ORDER BY message ASC")
   LiveData<List<Message>> getAlphabetizedMessages();
 
