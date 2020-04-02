@@ -12,15 +12,35 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat.entities;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * The Conversation class to join 2 entities ChatUser.
  *
  * @author Charlie Condorcet.
  */
+@Entity(tableName = "conversation_table")
 public class Conversation {
 
+  /**
+   * The ID of the Conversation.
+   */
+  @PrimaryKey
+  @NonNull
+  @ColumnInfo(name="conversation")
   private int IdConversation;
+
+  /**
+   * The ID of the first ChatUser
+   */
   private int IdFirstUser;
+
+  /**
+   * The ID of the second ChatUser
+   */
   private int IdSecondUser;
 
   /**
