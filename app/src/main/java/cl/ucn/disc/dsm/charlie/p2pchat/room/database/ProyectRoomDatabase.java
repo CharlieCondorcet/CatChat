@@ -30,7 +30,7 @@ import java.util.concurrent.Executors;
  *
  * @author Charlie Condorcet.
  */
-@Database(entities = {Message.class, ChatUser.class}, version = 2, exportSchema = false)
+@Database(entities = {Message.class, ChatUser.class}, version = 10, exportSchema = false)
 public abstract class ProyectRoomDatabase extends RoomDatabase {
 
   //Dao instance to Message

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-    //When your Activity first starts, the ViewModelProviders will create the ViewModel
+
     this.mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
 
     // add an observer for the LiveData returned by getAlphabetizedMessages().

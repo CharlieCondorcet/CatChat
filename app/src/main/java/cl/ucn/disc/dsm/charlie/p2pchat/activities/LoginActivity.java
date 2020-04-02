@@ -18,16 +18,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ChatUserViewModel;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ProyectViewModel;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-  private ChatUserViewModel chatUserViewModel;
   private EditText email;
   private EditText password;
 
@@ -35,8 +37,6 @@ public class LoginActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
-
-    this.chatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
 
     this.email = (EditText) findViewById(R.id.et_e_email);
     this.password = (EditText) findViewById(R.id.et_p_password);
@@ -47,15 +47,15 @@ public class LoginActivity extends AppCompatActivity {
     String str_email = this.email.getText().toString();
     String str_pass = this.password.getText().toString();
 
-    List<ChatUser> users = this.chatUserViewModel.getAllChatUsers();
+    List<ChatUser> users = new ArrayList<ChatUser>();
 
     for (int i = 0; i < users.size(); i++) {
       try{
         if (str_email.equals(users.get(i).getEmail()) && str_pass
             .equals(users.get(i).getPassword())) {
           Toast.makeText(this, "cuenta verificada!", Toast.LENGTH_SHORT).show();
-          Intent intent = new Intent(this, MainActivity.class);
-          startActivity(intent);
+          changeActivity();
+
         } else {
           Toast.makeText(this, "el correo proporcionado o la contrasenia no se reconocen!",
               Toast.LENGTH_SHORT).show();
@@ -66,7 +66,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+  }
 
+  public void changeActivity(){
+    Intent intent = new Intent(this, MainActivity.class);
+    startActivity(intent);
   }
 
 }

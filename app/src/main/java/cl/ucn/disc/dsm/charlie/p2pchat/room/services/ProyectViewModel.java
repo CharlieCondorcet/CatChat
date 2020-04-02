@@ -30,10 +30,10 @@ public class ProyectViewModel extends AndroidViewModel {
   //the instance of ProtectRepository.
   private ProyectRepository mRepository;
 
-  //atribute with all Messages of this ViewModel.
+  //attribute with all Messages of this ViewModel.
   private LiveData<List<Message>> mAllMessages;
 
-  //atribute with all CharUsers of this ViewModel.
+  //attribute with all CharUsers of this ViewModel.
   private List<ChatUser> mAllChatUser;
 
   public ProyectViewModel(Application application) {
