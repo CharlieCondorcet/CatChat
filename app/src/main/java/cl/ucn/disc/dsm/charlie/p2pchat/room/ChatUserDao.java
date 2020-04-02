@@ -19,6 +19,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

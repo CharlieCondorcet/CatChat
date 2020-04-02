@@ -18,6 +18,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,7 +39,7 @@ public interface ConversationDao {
   void deleteAll();
 
   //Request all Conversations.
-  @Query("SELECT * from conversation_table")
+  @Query("SELECT * from conversation_table ORDER BY conversation ASC")
   List<Conversation> getAllConversation();
 
 }
