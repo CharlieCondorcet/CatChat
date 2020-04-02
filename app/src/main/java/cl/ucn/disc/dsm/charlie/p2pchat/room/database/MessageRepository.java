@@ -22,6 +22,9 @@ import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.ConversationDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
 import java.util.List;
+import javax.xml.transform.Transformer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The Repository class to comunicate the DB with the application interface.
@@ -30,14 +33,40 @@ import java.util.List;
  */
 public class MessageRepository {
 
+  /**
+   * The MessagenDao.
+   */
   private MessageDao mMessagedDao;
+
+  /**
+   * The List LiveDAta with all Messages.
+   */
   private LiveData<List<Message>> mAllMessages;
 
+  /**
+   * The ChatUserDao.
+   */
   private ChatUserDao mChatUserDao;
+
+  /**
+   * The List with all ChatUsers.
+   */
   private List<ChatUser> mAllChatUsers;
 
+  /**
+   * The ConversationDao.
+   */
   private ConversationDao mConversation;
+
+  /**
+   * The List with all Conversation.
+   */
   private List<Conversation> mAllConversations;
+
+  /**
+   * The logger.
+   */
+  private static final Logger log = LoggerFactory.getLogger(Transformer.class);
 
   // Note that in order to unit test the WordRepository, you have to remove the Application
   // dependency. This adds complexity and much more code, and this sample is not about testing.
@@ -47,11 +76,16 @@ public class MessageRepository {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
 
-    this.mAllMessages = this.mMessagedDao.getAlphabetizedMessages();
-    //this.mAllChatUsers = this.mChatUserDao.getAllChatUsers();
-    //this.mAllConversations = this.mConversation.getAllConversation();
+    //FIXME: mAllChatUsers and mAllConversations cannot be inicialized.
+    try {
+      this.mAllMessages = this.mMessagedDao.getAlphabetizedMessages();
+      this.mAllChatUsers = this.mChatUserDao.getAllChatUsers();
+      this.mAllConversations = this.mConversation.getAllConversation();
 
-
+      log.info("All parameter of Repository initialized correctly!");
+    } catch (NullPointerException e) {
+      log.warn("Method getAll% return Null values, uninitialized parameters: {}",e);
+    }
   }
 
   // Room executes all queries on a separate thread.
