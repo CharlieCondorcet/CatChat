@@ -46,9 +46,9 @@ public class MessageRepository {
   public MessageRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
-    this.mAllMessages = (LiveData<List<Message>>) this.mMessagedDao.getAlphabetizedMessages();
-    this.mAllChatUsers = (List<ChatUser>) this.mChatUserDao.getAllChatUsers();
-    this.mAllConversations = (List<Conversation>) this.mConversation.getAllConversation();
+    this.mAllMessages = this.mMessagedDao.getAlphabetizedMessages();
+    this.mAllChatUsers = this.mChatUserDao.getAllChatUsers();
+    this.mAllConversations = this.mConversation.getAllConversation();
   }
 
   // Room executes all queries on a separate thread.

@@ -38,7 +38,6 @@ import java.util.ListIterator;
 
 public class LoginActivity extends AppCompatActivity {
 
-  private ChatUserViewModel chatUserViewModel;
   private EditText email;
   private EditText password;
 
@@ -47,37 +46,11 @@ public class LoginActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
 
-    this.chatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
-
     this.email = (EditText) findViewById(R.id.et_e_email);
     this.password = (EditText) findViewById(R.id.et_p_password);
   }
 
-  public void verifyAccount(View view) {
-    String str_email = this.email.getText().toString();
-    String str_pass = this.password.getText().toString();
 
-    List<ChatUser> users = this.chatUserViewModel.getAllChatUsers();
-
-    for (int i = 0; i < users.size(); i++) {
-      try{
-        if (str_email.equals(users.get(i).getEmail()) && str_pass
-            .equals(users.get(i).getPassword())) {
-          Toast.makeText(this, "cuenta verificada!", Toast.LENGTH_SHORT).show();
-          Intent intent = new Intent(this, MainActivity.class);
-          startActivity(intent);
-        } else {
-          Toast.makeText(this, "el correo proporcionado o la contrasenia no se reconocen!",
-              Toast.LENGTH_SHORT).show();
-        }
-      }catch (Exception e){
-        System.console().printf("error: "+e);
-      }
-
-    }
-
-
-  }
 
 }
 

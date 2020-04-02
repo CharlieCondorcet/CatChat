@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     //When your Activity first starts, the ViewModelProviders will create the ViewModel
     this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
 
+    System.console().printf("no se pudo instanciar el viewmodel");
     // add an observer for the LiveData returned by getAlphabetizedMessages().
     //The onChanged() method fires when the observed data changes and the activity is in the foreground.
     mMessageViewModel.getAllMessages().observe(this, new Observer<List<Message>>() {
