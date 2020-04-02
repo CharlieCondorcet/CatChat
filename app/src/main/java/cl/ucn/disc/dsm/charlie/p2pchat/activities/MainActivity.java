@@ -28,6 +28,9 @@ import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ProyectViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
+import javax.xml.transform.Transformer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The principal Activity.
@@ -36,8 +39,19 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
 
+  /**
+   * The logger.
+   */
+  private static final Logger log = LoggerFactory.getLogger(Transformer.class);
+
+  /**
+   * ProyectViewModel to start the database instance.
+   */
   private ProyectViewModel mProyectViewModel;
 
+  /**
+   * Code approved to enter a message.
+   */
   public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
   @Override
@@ -52,10 +66,14 @@ public class MainActivity extends AppCompatActivity {
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-    //When your Activity first starts, the ViewModelProviders will create the ViewModel
-    this.mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
+    try {
+      //When your Activity first starts, the ViewModelProviders will create the ViewModel
+      this.mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
 
-    System.out.println("no se pudo instanciar el viewmodel");
+    }catch (Exception e){
+      log.warn("unknown error to instance the ProyectViewModel, information about: {}",e);
+    }
+
     // add an observer for the LiveData returned by getAlphabetizedMessages().
     //The onChanged() method fires when the observed data changes and the activity is in the foreground.
     mProyectViewModel.getAllMessages().observe(this, new Observer<List<Message>>() {
@@ -71,9 +89,15 @@ public class MainActivity extends AppCompatActivity {
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, NewMessageActivity.class);
-        startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
+        try {
+          Intent intent = new Intent(MainActivity.this, NewMessageActivity.class);
+          startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
+          log.info("Activity change started successfully!");
+        }catch (Exception e){
+          log.warn("The activity could not start, information about the problem: {}",e);
+        }
       }
+      
     });
 
   }
@@ -93,11 +117,13 @@ public class MainActivity extends AppCompatActivity {
           null,
           0);
       mProyectViewModel.insertMessage(message);
+      log.info("Message added correctly!");
     } else {
       Toast.makeText(
           getApplicationContext(),
           R.string.empty_not_saved,
           Toast.LENGTH_LONG).show();
+      log.warn("Problems adding message: Void Message");
     }
     cantMessages++;
   }
