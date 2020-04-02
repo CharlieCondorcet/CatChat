@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
 
     this.email = (EditText) findViewById(R.id.et_e_email);
     this.password = (EditText) findViewById(R.id.et_p_password);
-
   }
 
   public void verifyAccount(View view) {
