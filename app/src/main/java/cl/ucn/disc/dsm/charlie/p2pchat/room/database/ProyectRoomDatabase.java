@@ -19,8 +19,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.ConversationDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -30,19 +32,24 @@ import java.util.concurrent.Executors;
  *
  * @author Charlie Condorcet.
  */
-@Database(entities = {Message.class, ChatUser.class}, version = 2, exportSchema = false)
+@Database(entities = {Message.class, ChatUser.class,
+    Conversation.class}, version = 2, exportSchema = false)
 public abstract class ProyectRoomDatabase extends RoomDatabase {
 
-  //Dao instance to Message
+  //Dao instance to Message.
   public abstract MessageDao messageDao();
 
-  //Dao instance to ChatUser
+  //Dao instance to ChatUser.
   public abstract ChatUserDao chatUserDao();
 
+  //Dao instance to Conversation.
+  public abstract ConversationDao conversationDao();
+
+  //Instance to user singleton.
   private static volatile ProyectRoomDatabase INSTANCE;
 
+  //The executor.
   private static final int NUMBER_OF_THREADS = 4;
-
   static final ExecutorService databaseWriteExecutor =
       Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
@@ -54,6 +61,8 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
           INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
               ProyectRoomDatabase.class, "proyect_database")
               .addCallback(sRoomDatabaseCallback)
+              //add a migration delete to start a new migration with a new DB.
+              .fallbackToDestructiveMigration()
               .build();
         }
       }
@@ -72,16 +81,22 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
       databaseWriteExecutor.execute(() -> {
         // Populate the database in the background.
         // If you want to start with more words, just add them.
+        MessageDao dao = INSTANCE.messageDao();
+        dao.deleteAll();
 
+        Message message = new Message(1, "Hello", null, null, null, 0);
+        dao.insert(message);
+        message = new Message(2, "World", null, null, null, 0);
+        dao.insert(message);
 
         //Use the order from the corresponding table.
         ChatUserDao chatUserDao = INSTANCE.chatUserDao();
         chatUserDao.deleteAll();
 
         //Add 2 users to example.
-        ChatUser user= new ChatUser("tommy", 123123, "tommy99@gmail.com", "HolaHola123");
+        ChatUser user = new ChatUser("tommy", 123123, "tommy99@gmail.com", "HolaHola123");
         chatUserDao.insert(user);
-        user= new ChatUser("camila", 999333, "camiflower31@aol.com", "12345678abC");
+        user = new ChatUser("camila", 999333, "camiflower31@aol.com", "12345678abC");
         chatUserDao.insert(user);
 
       });
