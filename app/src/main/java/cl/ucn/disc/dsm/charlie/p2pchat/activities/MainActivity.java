@@ -23,7 +23,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ChatUserViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageListAdapter;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
           null,
           null,
           0);
-      mMessageViewModel.insert(message);
+      mMessageViewModel.insertMessage(message);
     } else {
       Toast.makeText(
           getApplicationContext(),

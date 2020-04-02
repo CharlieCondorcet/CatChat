@@ -32,6 +32,7 @@ import java.util.concurrent.Executors;
  *
  * @author Charlie Condorcet.
  */
+//TODO: change the exportSchema to listen the Backend.
 @Database(entities = {Message.class, ChatUser.class,
     Conversation.class}, version = 2, exportSchema = false)
 public abstract class ProyectRoomDatabase extends RoomDatabase {
