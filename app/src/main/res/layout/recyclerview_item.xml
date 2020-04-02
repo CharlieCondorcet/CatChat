@@ -9,5 +9,6 @@
         style="@style/message_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light" />
+      android:textColor="@color/black"
+        android:background="@drawable/gradient_conversation_message" />
 </LinearLayout>

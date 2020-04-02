@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-
     //Show the data (messages) in the recycler view.
     RecyclerView recyclerView = findViewById(R.id.recyclerview);
     final MessageListAdapter adapter = new MessageListAdapter(this);
@@ -69,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
     try {
       //When your Activity first starts, the ViewModelProviders will create the ViewModel
       this.mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
+
+      Intent intent=new Intent(this, LoginActivity.class);
+      startActivity(intent);
 
     }catch (Exception e){
       log.warn("unknown error to instance the ProyectViewModel, information about: {}",e);
@@ -97,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
           log.warn("The activity could not start, information about the problem: {}",e);
         }
       }
-      
+
     });
 
   }
