@@ -91,13 +91,24 @@ public class ChatUser {
     return Password;
   }
 
-
+  /**
+   * @param name.
+   */
   public void setName(String name) { Name = name; }
 
+  /**
+   * @param id.
+   */
   public void setId(int id) { Id = id; }
 
+  /**
+   * @param email.
+   */
   public void setEmail(String email) { Email = email; }
 
+  /**
+   * @param password.
+   */
   public void setPassword(String password) { Password = password; }
 
 }

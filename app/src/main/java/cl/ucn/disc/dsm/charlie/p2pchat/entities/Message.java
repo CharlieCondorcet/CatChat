@@ -125,27 +125,44 @@ public class Message {
    */
   public int getErrorData() { return ErrorData; }
 
-
+  /**
+   * @param idMessage.
+   */
   public void setIdMessage(int idMessage) {
     IdMessage = idMessage;
   }
 
+  /**
+   * @param text.
+   */
   public void setText(String text) {
     Text = text;
   }
 
+  /**
+   * @param created.
+   */
   public void setCreated(Date created) {
     Created = created;
   }
 
+  /**
+   * @param latitude.
+   */
   public void setLatitude(String latitude) {
     Latitude = latitude;
   }
 
+  /**
+   * @param longitude.
+   */
   public void setLongitude(String longitude) {
     Longitude = longitude;
   }
 
+  /**
+   * @param errorData.
+   */
   public void setErrorData(int errorData) {
     ErrorData = errorData;
   }
