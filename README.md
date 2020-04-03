@@ -1,7 +1,7 @@
 
-# <h1> CatChat </h1>
+# <h1> CatChat (ChatDisc)</h1>
 
- ![Screenshot](./logo_catchat_rojo_azul.png) 
+ ![App's Logo](./img/logo_catchat.png) 
 
 AndroidStudio - Chat  -  ROOM  - DocumentationGoogleJavaStyle  -  [Backend](https://github.com/CharlieCondorcet/ChatDiscBackend)
 
@@ -101,4 +101,5 @@ Licenced by [MIT License](https://github.com/CharlieCondorcet/ChatDisc/blob/mast
 - To report bugs and feedback: CatChatSupport@charliedroid.com
 - Official website to manage new Android projects: www.charliedroid.com
 
-<h4 align="center">Have a nice day! :smile_cat::smile_cat::smile_cat:</h4>
+
+<h5 align="center"><i>Have a nice day! </i>:smile_cat::smile_cat::smile_cat:</h5>
