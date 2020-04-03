@@ -11,32 +11,84 @@
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical"
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
   android:background="@color/new_message_bg"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+  tools:context=".activities.LoginActivity">
 
-<EditText
-  android:id="@+id/edit_message"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:minHeight="@dimen/min_height"
-  android:fontFamily="sans-serif-light"
-  android:hint="@string/hint_message"
-  android:inputType="textAutoComplete"
-  android:textColor="@color/buttonLabel"
-  android:layout_margin="@dimen/big_padding"
-  android:importantForAutofill="no"
-  android:textSize="18sp" />
 
-<Button
-  android:id="@+id/button_save"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:background="@drawable/gradient_login_btns"
-  android:text="@string/button_save"
-  android:layout_margin="@dimen/big_padding"
-  android:textColor="@color/buttonLabel" />
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar5"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="@color/conversation_bg_toolbar"
+    android:minHeight="?attr/actionBarSize"
+    android:theme="?attr/actionBarTheme"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+  <ImageView
+    android:id="@+id/imageView5"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_marginTop="4dp"
+    android:src="@drawable/logo_catchat_only_white"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+  <Button
+    android:id="@+id/btn_b_back5"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:layout_marginTop="7dp"
+    android:layout_marginStart="10dp"
+    android:background="@drawable/gradient_login_btns"
+    android:text="@string/app_function_back"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+  <EditText
+    android:id="@+id/edit_message"
+    android:layout_width="328dp"
+    android:layout_height="45dp"
+    android:layout_marginTop="50dp"
+    android:fontFamily="sans-serif-light"
+    android:hint="@string/hint_message"
+    android:importantForAutofill="no"
+    android:inputType="textAutoComplete"
+    android:minHeight="@dimen/min_height"
+    android:textColor="@color/buttonLabel"
+    android:textSize="18sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+  <Button
+    android:id="@+id/button_save"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:background="@drawable/gradient_login_btns"
+    android:text="@string/button_save"
+    android:textColor="@color/buttonLabel"
+    android:textSize="18sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/edit_message" />
+  <TextView
+    android:id="@+id/textView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="72dp"
+    android:text="@string/new_message_title"
+    android:textSize="30sp"
+    android:textColor="@color/buttonLabel"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/toolbar5" />
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

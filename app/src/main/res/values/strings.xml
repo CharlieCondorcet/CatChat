@@ -17,4 +17,6 @@
   <string name="register_name">Name User</string>
   <string name="register_password_confirm">Confirm your password</string>
 
+  <string name="new_message_title">Enter your message!</string>
+
 </resources>
