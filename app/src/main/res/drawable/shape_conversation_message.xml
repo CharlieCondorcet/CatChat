@@ -11,32 +11,21 @@
   ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical"
-  android:background="@color/new_message_bg"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-<EditText
-  android:id="@+id/edit_message"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:minHeight="@dimen/min_height"
-  android:fontFamily="sans-serif-light"
-  android:hint="@string/hint_message"
-  android:inputType="textAutoComplete"
-  android:textColor="@color/buttonLabel"
-  android:layout_margin="@dimen/big_padding"
-  android:importantForAutofill="no"
-  android:textSize="18sp" />
+  <item>
 
-<Button
-  android:id="@+id/button_save"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:background="@drawable/gradient_login_btns"
-  android:text="@string/button_save"
-  android:layout_margin="@dimen/big_padding"
-  android:textColor="@color/buttonLabel" />
+    <shape>
 
-</LinearLayout>
+      <gradient
+        android:angle="90"
+        android:startColor="#04ADFB"
+        android:endColor="#04ADFB"
+        android:type="linear" />
+      <corners android:radius="50dp"/>
+
+    </shape>
+
+  </item>
+
+</selector>

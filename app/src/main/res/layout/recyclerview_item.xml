@@ -10,5 +10,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
       android:textColor="@color/black"
-        android:background="@drawable/gradient_conversation_message" />
+        android:background="@drawable/shape_conversation_message" />
 </LinearLayout>

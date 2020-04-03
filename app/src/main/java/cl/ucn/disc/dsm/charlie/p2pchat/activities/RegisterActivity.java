@@ -12,35 +12,15 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat.activities;
 
-import android.content.Intent;
-import android.view.View;
-import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
 
-
-public class LoginActivity extends AppCompatActivity {
-
-  private EditText email;
-  private EditText password;
+public class RegisterActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_login);
-
-    this.email = (EditText) findViewById(R.id.et_e_email);
-    this.password = (EditText) findViewById(R.id.et_p_password);
+    setContentView(R.layout.activity_registry);
   }
-
-
-  public void initAct(View view){
-    Intent intent=new Intent(this, MainActivity.class);
-    startActivity(intent);
-  }
-
 }
-
-
-
