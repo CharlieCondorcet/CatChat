@@ -12,15 +12,38 @@
 
 package cl.ucn.disc.dsm.charlie.p2pchat.activities;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
+import java.util.EmptyStackException;
 
 public class RegisterActivity extends AppCompatActivity {
+
+  private EditText name_register;
+  private EditText email_register;
+  private EditText password_register;
+  private EditText pass_confirm_register;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_registry);
+
+    //TODO: the email and password can be getted by loginActivity.
+    // Change the opcion to recept this parameters.
+    this.name_register = (EditText) findViewById(R.id.txt_pt_register_user_name);
+    this.email_register = (EditText) findViewById(R.id.txt_em_register_email);
+    this.password_register = (EditText) findViewById(R.id.txt_p_register_pass);
+    this.pass_confirm_register = (EditText) findViewById(R.id.txt_p_register_pass_confirm);
+
   }
+
+  public void BackToLogin(View view) {
+    Intent intent = new Intent(this, LoginActivity.class);
+    startActivity(intent);
+  }
+
 }

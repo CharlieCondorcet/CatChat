@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
       //When your Activity first starts, the ViewModelProviders will create the ViewModel
       this.mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
 
-
     }catch (Exception e){
       log.warn("unknown error to instance the ProyectViewModel, information about: {}",e);
     }
@@ -128,9 +127,10 @@ public class MainActivity extends AppCompatActivity {
     cantMessages++;
   }
 
-  public void initAct(View view){
+  public void backToLogin(View view){
     Intent intent=new Intent(this, LoginActivity.class);
     startActivity(intent);
+
   }
 
 }

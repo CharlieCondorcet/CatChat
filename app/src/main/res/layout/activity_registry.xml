@@ -19,7 +19,6 @@
   android:background="@drawable/gradient_register_background"
   tools:context=".activities.RegisterActivity">
 
-
   <EditText
     android:id="@+id/txt_em_register_email"
     android:layout_width="wrap_content"
@@ -31,7 +30,7 @@
     android:textColor="@color/buttonLabel"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/txt_pt_register_user-name" />
+    app:layout_constraintTop_toBottomOf="@+id/txt_pt_register_user_name" />
   <EditText
     android:id="@+id/txt_p_register_pass"
     android:layout_width="wrap_content"
@@ -44,8 +43,9 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/txt_em_register_email" />
+
   <EditText
-    android:id="@+id/txt_p_register_pass-confirm"
+    android:id="@+id/txt_p_register_pass_confirm"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
@@ -58,7 +58,7 @@
     app:layout_constraintTop_toBottomOf="@+id/txt_p_register_pass" />
 
   <EditText
-    android:id="@+id/txt_pt_register_user-name"
+    android:id="@+id/txt_pt_register_user_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="50dp"
@@ -70,7 +70,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/txt_tv_register_title" />
   <Button
-    android:id="@+id/btn_b_register"
+    android:id="@+id/btn_b_register_register"
     android:layout_width="180dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
@@ -79,19 +79,20 @@
     android:textSize="18sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/txt_p_register_pass-confirm" />
+    app:layout_constraintTop_toBottomOf="@+id/txt_p_register_pass_confirm" />
   <TextView
     android:id="@+id/txt_tv_register_title"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="100dp"
     android:text="@string/register_title"
+    android:textColor="@color/buttonLabel"
     android:textSize="30sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
   <androidx.appcompat.widget.Toolbar
-    android:id="@+id/toolbar2"
+    android:id="@+id/cts_tb_register_toolbar"
     android:layout_width="match_parent"
     android:layout_height="56dp"
     android:background="@color/new_user_bg_toolbar"
@@ -110,12 +111,13 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
   <Button
-    android:id="@+id/btn_b_back"
+    android:id="@+id/btn_b_register_back"
     android:layout_width="wrap_content"
     android:layout_height="40dp"
     android:layout_marginTop="7dp"
     android:layout_marginStart="10dp"
     android:background="@drawable/gradient_login_btns"
+    android:onClick="BackToLogin"
     android:text="@string/app_function_back"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />

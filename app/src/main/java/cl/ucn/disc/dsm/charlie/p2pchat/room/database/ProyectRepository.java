@@ -14,7 +14,6 @@ package cl.ucn.disc.dsm.charlie.p2pchat.room.database;
 
 import android.app.Application;
 import androidx.lifecycle.LiveData;
-import checkers.units.quals.C;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
@@ -79,7 +78,7 @@ public class ProyectRepository {
     //FIXME: mAllChatUsers and mAllConversations cannot be inicialized.
     try {
       this.mAllMessages = this.mMessagedDao.getAlphabetizedMessages();
-      this.mAllChatUsers = this.mChatUserDao.getAllChatUsers();
+      this.mAllChatUsers = this.mChatUserDao.getAlphabetizedChatUsers();
       this.mAllConversations = this.mConversation.getAllConversation();
 
       log.info("All parameter of Repository initialized correctly!");

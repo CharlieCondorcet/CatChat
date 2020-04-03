@@ -17,26 +17,42 @@ import android.view.View;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ProyectViewModel;
+import javax.xml.transform.Transformer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-  private EditText email;
-  private EditText password;
+  /**
+   * The logger.
+   */
+  private static final Logger log = LoggerFactory.getLogger(Transformer.class);
+
+  private EditText email_login;
+  private EditText password_login;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
 
-    this.email = (EditText) findViewById(R.id.et_e_email);
-    this.password = (EditText) findViewById(R.id.et_p_password);
+    this.email_login = (EditText) findViewById(R.id.et_e_login_email);
+    this.password_login = (EditText) findViewById(R.id.et_p_login_password);
+
   }
 
+  public void startRegister(View view) {
+    Intent intent = new Intent(this, RegisterActivity.class);
+    startActivity(intent);
+  }
 
-  public void initAct(View view){
-    Intent intent=new Intent(this, RegisterActivity.class);
+  public void startConversation(View view) {
+    Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);
   }
 

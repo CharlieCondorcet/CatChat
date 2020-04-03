@@ -19,8 +19,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   android:background="@color/new_message_bg"
-  tools:context=".activities.LoginActivity">
-
+  tools:context=".activities.NewMessageActivity">
 
   <androidx.appcompat.widget.Toolbar
     android:id="@+id/toolbar5"
@@ -48,6 +47,7 @@
     android:layout_marginTop="7dp"
     android:layout_marginStart="10dp"
     android:background="@drawable/gradient_login_btns"
+    android:onClick="backToConversation"
     android:text="@string/app_function_back"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />

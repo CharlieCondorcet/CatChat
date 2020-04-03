@@ -48,4 +48,10 @@ public class NewMessageActivity extends AppCompatActivity {
       }
     });
   }
+
+  public void backToConversation(View view){
+    Intent intent=new Intent(this, MainActivity.class);
+    startActivity(intent);
+  }
+
 }

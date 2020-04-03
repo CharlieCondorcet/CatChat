@@ -19,33 +19,33 @@
   tools:context=".activities.LoginActivity">
 
   <Button
-    android:id="@+id/btn_b_login"
+    android:id="@+id/btn_b_login_login"
     android:layout_width="180dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
     android:background="@drawable/gradient_login_btns"
-    android:onClick="initAct"
+    android:onClick="startConversation"
     android:text="@string/login_btn_login"
     android:textSize="18sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.502"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/et_p_password" />
+    app:layout_constraintTop_toBottomOf="@+id/et_p_login_password" />
   <Button
-    android:id="@+id/btn_b_register"
+    android:id="@+id/btn_b_login_register"
     android:layout_width="180dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
     android:background="@drawable/gradient_login_btns"
-    android:onClick="initAct"
+    android:onClick="startRegister"
     android:text="@string/login_btn_register"
     android:textSize="18sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.502"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/btn_b_login" />
+    app:layout_constraintTop_toBottomOf="@+id/btn_b_login_login" />
   <EditText
-    android:id="@+id/et_p_password"
+    android:id="@+id/et_p_login_password"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
@@ -57,10 +57,10 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.502"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/et_e_email" />
+    app:layout_constraintTop_toBottomOf="@+id/et_e_login_email" />
 
   <EditText
-    android:id="@+id/et_e_email"
+    android:id="@+id/et_e_login_email"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
