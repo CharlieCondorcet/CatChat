@@ -37,6 +37,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
     android:background="@drawable/gradient_login_btns"
+    android:onClick="initAct"
     android:text="@string/login_btn_register"
     android:textSize="18sp"
     app:layout_constraintEnd_toEndOf="parent"

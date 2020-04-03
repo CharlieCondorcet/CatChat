@@ -1,5 +1,8 @@
 
-# Chat Disc
+# <h1> CatChat </h1>
+
+ ![Screenshot](./logo_catchat_rojo_azul.png) 
+
 AndroidStudio - Chat  -  ROOM  - DocumentationGoogleJavaStyle  -  [Backend](https://github.com/CharlieCondorcet/ChatDiscBackend)
 
 > The application to chat with anyone!
@@ -33,21 +36,42 @@ features that make the use of chat comfortable.
 
 
 ## Backend
-the Backend you can find it in [ChatDiscBackend]("https://github.com/CharlieCondorcet/ChatDiscBackend")
+You can find the backend developed specifically for this application in
+[ChatDiscBackend](https://github.com/CharlieCondorcet/ChatDiscBackend).
 
 
 ## Screenshots
 
-Principal interface
-
-![Screenshot](./img/img1.png)
+ <b>The New Message</b>
+ 
+ ![Screenshot](./img/app_ui_message.png) 
+ 
+ 
+ <b>The Conversation</b>
+ 
+ ![Screenshot](./img/app_ui_conversation.png)
+ 
+ 
+ <b>The Login</b>
+ 
+ ![Screenshot](./img/app_ui_login.png)
+ 
+ 
+ <b>The Register</b>
+ 
+ ![Screenshot](./img/app_ui_register.png)
 
 
 ## Features
-coming soon...
+coming soon:
+ - Landscape Mode
+ - Nocture Mode.
+ - Update The Toolbar.
+ - Register With Other Account(Google, Facebook, Twitter).
 
 
 ## Technologies
+For the complete Project, the following were used:
 - JAVA 8<br>
 - Gradle<br>
 - Android Jetpack (Architecture Tecnologies)<br>
@@ -62,8 +86,11 @@ coming soon...
 
 
 ## Status
-- In development...
-
+ The graphical interface of the application and the navigation through the 
+ Activities is this achieved, the most important thing to do is to relate the 
+ data from the database to the Avtivity to correct the logical part of the 
+ application.
+ 
 
 ## License
 Licenced by [MIT License](https://github.com/CharlieCondorcet/ChatDisc/blob/master/LICENSE)
@@ -71,6 +98,7 @@ Licenced by [MIT License](https://github.com/CharlieCondorcet/ChatDisc/blob/mast
 
 ## Contact
 - Created by [@CharlieCondorcet](https://github.com/charliecondorcet)
-- To report bugs and feedback: ChatDiscSupport@charliedroid.com
+- To report bugs and feedback: CatChatSupport@charliedroid.com
 - Official website to manage new Android projects: www.charliedroid.com
 
+<h4 align="center">Have a nice day! :smile_cat::smile_cat::smile_cat:</h4>

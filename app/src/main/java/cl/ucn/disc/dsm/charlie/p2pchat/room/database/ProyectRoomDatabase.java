@@ -85,9 +85,9 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
         MessageDao dao = INSTANCE.messageDao();
         dao.deleteAll();
 
-        Message message = new Message(1, "Hello", null, null, null, 0);
+        Message message = new Message(1, "Hey there!", null, null, null, 0);
         dao.insert(message);
-        message = new Message(2, "World", null, null, null, 0);
+        message = new Message(2, "I am using CatChat.", null, null, null, 0);
         dao.insert(message);
 
         //Use the order from the corresponding table.

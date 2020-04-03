@@ -34,6 +34,7 @@
     android:layout_marginTop="7dp"
     android:layout_marginStart="10dp"
     android:background="@drawable/gradient_login_btns"
+    android:onClick="initAct"
     android:text="@string/app_function_back"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent" />
