@@ -9,7 +9,7 @@
   <color name="message_bg">#04ADFB</color>
   <color name="new_message_bg">#0A03D1</color>
 
-  <color name="new_user_bg">#80E81017</color>
-  
+  <color name="new_user_bg_toolbar">#80E81017</color>
+  <color name="conversation_bg_toolbar">#803C85EA</color>
 </resources>
 

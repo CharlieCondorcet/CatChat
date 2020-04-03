@@ -8,10 +8,40 @@
   android:background="@drawable/gradient_conversation_background"
   tools:context=".activities.MainActivity">
 
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="@color/conversation_bg_toolbar"
+    android:minHeight="?attr/actionBarSize"
+    android:theme="?attr/actionBarTheme"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+  <ImageView
+    android:id="@+id/imageView2"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_marginTop="4dp"
+    android:src="@drawable/logo_catchat_only_white"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+  <Button
+    android:id="@+id/btn_b_back2"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp"
+    android:layout_marginTop="7dp"
+    android:layout_marginStart="10dp"
+    android:background="@drawable/gradient_login_btns"
+    android:text="@string/app_function_back"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recyclerview"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="56dp"
     android:padding="@dimen/big_padding"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
