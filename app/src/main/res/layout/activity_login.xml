@@ -20,30 +20,32 @@
 
   <Button
     android:id="@+id/btn_b_login"
-    android:layout_width="200dp"
+    android:layout_width="180dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp"
     android:background="@drawable/gradient_login_btns"
     android:onClick="initAct"
     android:text="@string/login_btn_login"
+    android:textSize="18sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.502"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/et_p_password" />
   <Button
     android:id="@+id/btn_b_register"
-    android:layout_width="200dp"
+    android:layout_width="180dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
+    android:background="@drawable/gradient_login_btns"
     android:text="@string/login_btn_register"
+    android:textSize="18sp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.502"
     app:layout_constraintStart_toStartOf="parent"
-    android:background="@drawable/gradient_login_btns"
     app:layout_constraintTop_toBottomOf="@+id/btn_b_login" />
   <EditText
     android:id="@+id/et_p_password"
-    android:layout_width="200dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="15dp"
     android:ems="10"
@@ -58,7 +60,7 @@
 
   <EditText
     android:id="@+id/et_e_email"
-    android:layout_width="200dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp"
     android:ems="10"

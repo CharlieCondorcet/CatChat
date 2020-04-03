@@ -16,6 +16,88 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@drawable/gradient_register_background"
   tools:context=".activities.RegisterActivity">
+
+
+  <EditText
+    android:id="@+id/editTextTextEmailAddress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:ems="10"
+    android:hint="@string/login_email"
+    android:inputType="textEmailAddress"
+    android:textColor="@color/buttonLabel"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+  <EditText
+    android:id="@+id/editTextTextPassword"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:ems="10"
+    android:inputType="textPassword"
+    android:textColor="@color/buttonLabel"
+    android:hint="@string/login_password"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+  <EditText
+    android:id="@+id/editTextTextPassword2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:ems="10"
+    android:hint="@string/register_password_confirm"
+    android:inputType="textPassword"
+    android:textColor="@color/buttonLabel"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+  <EditText
+    android:id="@+id/editTextTextPersonName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    android:ems="10"
+    android:hint="@string/register_name"
+    android:inputType="textPersonName"
+    android:textColor="@color/buttonLabel"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+  <Button
+    android:id="@+id/btn_b_register"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:background="@drawable/gradient_login_btns"
+    android:text="@string/login_btn_register"
+    android:textSize="18sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+  <TextView
+    android:id="@+id/textView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="100dp"
+    android:text="@string/register_title"
+    android:textSize="30sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+  <ImageView
+    android:id="@+id/imageView"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginEnd="15dp"
+    android:src="@drawable/logo_catchat_only_white"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
