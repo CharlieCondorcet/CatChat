@@ -5,6 +5,8 @@
   <string name="button_save">Save</string>
   <string name="empty_not_saved">Message not saved because it is empty.</string>
 
+  <string name="app_function_back">Back</string>
+
   <string name="login_email">Email</string>
   <string name="login_password">Password</string>
   <string name="login_btn_login">Login</string>

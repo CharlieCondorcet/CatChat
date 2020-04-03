@@ -8,6 +8,8 @@
   <color name="black">#000000</color>
   <color name="message_bg">#04ADFB</color>
   <color name="new_message_bg">#0A03D1</color>
+
+  <color name="new_user_bg">#80E81017</color>
   
 </resources>
 
