@@ -22,7 +22,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ChatUserRepository;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ConversationRepository;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ChatUserViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageListAdapter;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
    * ProyectViewModel to start the database instance.
    */
   private MessageViewModel mMessageViewModel;
+  private ChatUserViewModel mChatUserViewModel;
 
   /**
    * Code approved to enter a message.
@@ -68,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
     try {
       //When your Activity first starts, the ViewModelProviders will create the ViewModel
       this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
-
+      this.mChatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
+      
     } catch (RuntimeException e) {
       log.warn(e.getMessage());
     }
@@ -83,11 +90,6 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    try {
-      log.debug(this.mMessageViewModel.getAllChatUsers().get(0).getName());
-    }catch (NullPointerException e){
-      log.debug(e.getMessage());
-    }
 
     //Start NewMessageActivity when the user taps the FAB.
     FloatingActionButton fab = findViewById(R.id.fab);
