@@ -24,6 +24,7 @@ import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.ConversationDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -63,6 +64,7 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
               ProyectRoomDatabase.class, "proyect_database")
               .addCallback(sRoomDatabaseCallback)
               //add a migration delete to start a new migration with a new DB.
+              .fallbackToDestructiveMigration()
               .build();
         }
       }
@@ -84,9 +86,10 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
         MessageDao dao = INSTANCE.messageDao();
         dao.deleteAll();
 
-        Message message = new Message( "Hey there!", null, null, null, 0);
+        Date date =new Date();
+        Message message = new Message( "Hey there!", date, null, null, 0);
         dao.insert(message);
-        message = new Message( "I am using CatChat.", null, null, null, 0);
+        message = new Message( "I am using CatChat.", date, null, null, 0);
         dao.insert(message);
 
         //Use the order from the corresponding table.
