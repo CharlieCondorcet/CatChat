@@ -28,17 +28,15 @@ import java.util.List;
 @Dao
 public interface MessageDao {
 
-  // Allowing the insert of the same word multiple times by passing a
-  // conflict resolution strategy.
-  //TODO: update the OnConflictStrategy becose is not a PK.
-  @Insert(onConflict = OnConflictStrategy.IGNORE)
+  // Add a new Message.
+  @Insert
   void insert(Message message);
 
-  //Delete all Conversations.
+  // Delete all Conversations.
   @Query("DELETE FROM message_table")
   void deleteAll();
 
-  //Request all ChatUsers in a LiveData.
+  // Request all ChatUsers in a LiveData.
   @Query("SELECT * from message_table ORDER BY message ASC")
   LiveData<List<Message>> getAlphabetizedMessages();
 

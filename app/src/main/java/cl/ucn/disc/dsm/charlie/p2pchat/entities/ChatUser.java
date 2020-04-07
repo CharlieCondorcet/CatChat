@@ -34,7 +34,6 @@ public class ChatUser {
    * The Id.
    */
   @PrimaryKey(autoGenerate = true)
-  @NonNull
   @ColumnInfo(name = "chat_user")
   private int Id;
 

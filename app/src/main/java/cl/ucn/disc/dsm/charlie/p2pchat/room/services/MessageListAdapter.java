@@ -29,6 +29,7 @@ import java.util.List;
  */
 public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.MessageViewHolder>{
 
+  // Find the Message received in the activity.
   class MessageViewHolder extends RecyclerView.ViewHolder {
     private final TextView messageItemView;
 
@@ -39,8 +40,11 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
   }
 
   private final LayoutInflater mInflater;
-  private List<Message> mMessages; // Cached copy of words
 
+  // Cached copy of Messages.
+  private List<Message> mMessages;
+
+  // The constructor to MessageListAdapter.
   public MessageListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
 
   @Override
@@ -66,7 +70,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
   }
 
   // getItemCount() is called many times, and when it is first called,
-  // mWords has not been updated (means initially, it's null, and we can't return null).
+  // mMessages has not been updated (means initially, it's null, and we can't return null).
   @Override
   public int getItemCount() {
     if (mMessages != null)

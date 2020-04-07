@@ -25,6 +25,7 @@ public class NewMessageActivity extends AppCompatActivity {
 
   public static final String EXTRA_REPLY = "com.example.android.messagelistsql.REPLY";
 
+  // Main parameters to identify the new Message.
   private EditText mEditMessageView;
 
   @Override
@@ -34,6 +35,7 @@ public class NewMessageActivity extends AppCompatActivity {
 
     mEditMessageView = findViewById(R.id.edit_message);
 
+    // Event triggered when clicked to send a Message.
     final Button button = findViewById(R.id.button_save);
     button.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
@@ -50,6 +52,7 @@ public class NewMessageActivity extends AppCompatActivity {
     });
   }
 
+  // Temporary connection (in terms of structure) to change activity to MainActivity.
   public void backToConversation(View view){
     Intent intent=new Intent(this, MainActivity.class);
     startActivity(intent);

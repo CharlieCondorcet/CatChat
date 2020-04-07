@@ -30,9 +30,8 @@ import java.util.List;
 @Dao
 public interface ChatUserDao {
 
-  // allowing the insert of the same word multiple times by passing a
-  // conflict resolution strategy.
-  @Insert(onConflict = OnConflictStrategy.IGNORE)
+  // Add a new ChatUser.
+  @Insert
   void insert(ChatUser chatUser);
 
   //Delete all Conversations.

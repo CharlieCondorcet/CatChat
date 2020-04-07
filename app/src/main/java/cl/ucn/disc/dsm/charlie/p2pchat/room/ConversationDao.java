@@ -29,16 +29,15 @@ import java.util.List;
 @Dao
 public interface ConversationDao {
 
-  //add a Conversation.
-  //TODO: change the @Insert without OnConflictStrategy
-  @Insert(onConflict = OnConflictStrategy.IGNORE)
+  // Add a Conversation.
+  @Insert
   void insert(Conversation conversation);
 
-  //delete all Conversations.
+  // Delete all Conversations.
   @Query("DELETE FROM conversation_table")
   void deleteAll();
 
-  //Request all Conversations.
+  // Request all Conversations.
   @Query("SELECT * from conversation_table ORDER BY conversation ASC")
   List<Conversation> getAllConversation();
 

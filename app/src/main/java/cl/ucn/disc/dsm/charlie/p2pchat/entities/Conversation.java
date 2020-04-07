@@ -25,11 +25,11 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "conversation_table")
 public class Conversation {
 
+  //TODO: match the primary keys to each other to follow the class diagram.
   /**
    * The ID of the Conversation.
    */
   @PrimaryKey(autoGenerate = true)
-  @NonNull
   @ColumnInfo(name="conversation")
   private int IdConversation;
 

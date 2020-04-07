@@ -22,6 +22,7 @@ import java.util.EmptyStackException;
 
 public class RegisterActivity extends AppCompatActivity {
 
+  // Main parameters to add a new ChatUser.
   private EditText name_register;
   private EditText email_register;
   private EditText password_register;
@@ -41,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
 
   }
 
+  // Temporary connection (in terms of structure) to change activity to LoginActivity.
   public void BackToLogin(View view) {
     Intent intent = new Intent(this, LoginActivity.class);
     startActivity(intent);

@@ -30,11 +30,11 @@ import java.util.Date;
 @Entity(tableName = "message_table")
 public class Message {
 
+  //TODO: match the primary keys to each other to follow the class diagram.
   /**
    * The IdMessage.
    */
   @PrimaryKey(autoGenerate = true)
-  @NonNull
   @ColumnInfo(name="message")
   private int IdMessage;
 

@@ -25,20 +25,27 @@ import java.util.List;
  */
 public class ConversationViewModel extends AndroidViewModel {
 
+  /**
+   * The repository created to get a Conversation entity.
+   */
   private ConversationRepository conversationRepository;
 
+  /**
+   * All Conversations instanced in this ViewModel to send to Activity.
+   */
   private List<Conversation> conversations;
 
+  // ViewModel constructor to get the Conversation entity.
   ConversationViewModel(Application application){
     super(application);
     this.conversationRepository=new ConversationRepository(application);
     this.conversations=this.conversationRepository.getAllConversations();
   }
 
-  //method get from return all Messages in repository.
+  //method get from return all Conversations in repository.
   public List<Conversation> getAllConversation() { return this.conversations; }
 
-  //add a new Message in the repository.
+  //add a new Conversation in the repository.
   public void insert(Conversation conversation) { this.conversationRepository.insertConversation(conversation); }
 
 }

@@ -48,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
   //The logger.
   private static final Logger log = LoggerFactory.getLogger(Transformer.class);
 
+  //The ViewModel to Message.
   private MessageViewModel mMessageViewModel;
 
+  //The ViewModel to ChatUser.
   private ChatUserViewModel mChatUserViewModel;
 
+  //The ViewModel to Conversation.
   private ConversationViewModel mConversationViewModel;
 
   //Code approved to enter a message.
@@ -68,29 +71,30 @@ public class MainActivity extends AppCompatActivity {
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-    //When your Activity first starts, the ViewModelProviders will create the ViewModel
+    //When your Activity first starts, the ViewModelProviders will create the ViewModel.
     try {
+      //Create persistent instances for the activity.
       this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
       this.mChatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
       this.mConversationViewModel = new ViewModelProvider(this).get(ConversationViewModel.class);
-      log.info("all ViewModel properly instantiated!");
 
+      log.info("all ViewModel properly instantiated!");
     } catch (RuntimeException e) {
-      log.warn("Error when instantiating ViewModel: {}",e.getMessage());
+      log.warn("Error when instantiating ViewModel: {}", e.getMessage());
     }
 
-    // add an observer for the LiveData returned by getAlphabetizedMessages().
-    //The onChanged() method fires when the observed data changes and the activity is in the foreground.
+    // Add an observer for the LiveData returned by getAlphabetizedMessages().
+    // The onChanged() method fires when the observed data changes and the
+    // activity is in the foreground.
     mMessageViewModel.getAllMessages().observe(this, new Observer<List<Message>>() {
       @Override
       public void onChanged(@Nullable final List<Message> messages) {
-        // Update the cached copy of the words in the adapter.
+        // Update the cached copy of the messages in the adapter.
         adapter.setMessages(messages);
       }
     });
 
-
-    //Start NewMessageActivity when the user taps the FAB.
+    // Start NewMessageActivity when the user taps the FAB.
     FloatingActionButton fab = findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -100,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
           startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
           log.info("Activity change started successfully!");
         } catch (Exception e) {
-          log.warn("The activity could not start, information about the problem: {}", e.getMessage());
+          log.warn("The activity could not start, information about the problem: {}",
+              e.getMessage());
         }
       }
 
@@ -109,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
   }
 
 
-  //If the activity returns with RESULT_OK, insert the returned word into the
-  // database by calling the insert() method of the WordViewModel.
+  // If the activity returns with RESULT_OK, insert the returned Message into the
+  // database by calling the insert() method of the MessageViewModel.
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
 
@@ -132,10 +137,10 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
+  // Temporary connection (in terms of structure) to change activity to LoginActivity.
   public void backToLogin(View view) {
     Intent intent = new Intent(this, LoginActivity.class);
     startActivity(intent);
-
   }
 
 }

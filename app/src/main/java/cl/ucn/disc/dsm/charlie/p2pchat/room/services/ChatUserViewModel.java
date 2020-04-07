@@ -26,20 +26,27 @@ import java.util.List;
  */
 public class ChatUserViewModel extends AndroidViewModel {
 
+  /**
+   * The repository created to get a ChatUser entity.
+   */
   private ChatUserRepository chatUserRepository;
 
+  /**
+   * All ChatUsers instanced in this ViewModel to send to Activity.
+   */
   private List<ChatUser> chatUsers;
 
+  // ViewModel constructor to get the ChatUser entity.
   public ChatUserViewModel(Application application){
     super(application);
     this.chatUserRepository=new ChatUserRepository(application);
     this.chatUsers=this.chatUserRepository.getAllChatUsers();
   }
 
-  //method get from return all Messages in repository.
+  //method get from return all ChatUsers in repository.
   public List<ChatUser> getAllChatUsers() { return chatUsers; }
 
-  //add a new Message in the repository.
+  //add a new ChatUser in the repository.
   public void insert(ChatUser chatUser) { chatUserRepository.insertChatUser(chatUser); }
 
 }

@@ -31,16 +31,16 @@ import java.util.List;
 public class MessageViewModel extends AndroidViewModel {
 
   /**
-   * Unique repository of the proyect to create and get entities.
+   * The repository created to get a Message entity.
    */
   private MessageRepository messageRepository;
 
   /**
-   * All Messages instanced in this ModelView to send to Activity.
+   * All Messages instanced in this ViewModel to send to Activity.
    */
   private LiveData<List<Message>> mAllMessages;
 
-  //ChatDisc ViewModel constructor to get all entities added.
+  // ViewModel constructor to get the Message entity.
   public MessageViewModel(Application application) {
     super(application);
     this.messageRepository = new MessageRepository(application);

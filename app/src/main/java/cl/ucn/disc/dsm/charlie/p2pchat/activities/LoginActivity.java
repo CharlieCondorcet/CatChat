@@ -25,11 +25,10 @@ import org.slf4j.LoggerFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
-  /**
-   * The logger.
-   */
+  // The logger.
   private static final Logger log = LoggerFactory.getLogger(Transformer.class);
 
+  // Main parameters to identify the ChatUser.
   private EditText email_login;
   private EditText password_login;
 
@@ -43,11 +42,13 @@ public class LoginActivity extends AppCompatActivity {
 
   }
 
+  // Temporary connection (in terms of structure) to change activity to RegisterActivity.
   public void startRegister(View view) {
     Intent intent = new Intent(this, RegisterActivity.class);
     startActivity(intent);
   }
 
+  // Temporary connection (in terms of structure) to change activity to MainActivity.
   public void startConversation(View view) {
     Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);
