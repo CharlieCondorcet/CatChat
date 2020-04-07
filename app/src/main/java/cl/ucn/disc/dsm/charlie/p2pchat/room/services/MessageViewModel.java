@@ -18,6 +18,7 @@ import androidx.lifecycle.LiveData;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ChatUserRepository;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ProyectRepository;
 import java.util.List;
 
@@ -26,53 +27,28 @@ import java.util.List;
  *
  * @author Charlie Condorcet.
  */
-public class ProyectViewModel extends AndroidViewModel {
+public class MessageViewModel extends AndroidViewModel {
 
   /**
    * Unique repository of the proyect to create and get entities.
    */
-  private final ProyectRepository mRepository;
-
+  private ProyectRepository mRepository;
   /**
    * All Messages instanced in this ModelView to send to Activity.
    */
   private LiveData<List<Message>> mAllMessages;
 
-  /**
-   * All ChatUsers instanced in this ModelView to send to Activity.
-   */
-  private List<ChatUser> mAllChatUsers;
-
-  /**
-   * All Conversations instanced in this ModelView to send to Activity.
-   */
-  private List<Conversation> mAllConversations;
-
-
   //ChatDisc ViewModel constructor to get all entities added.
-  public ProyectViewModel(Application application) {
+  public MessageViewModel(Application application) {
     super(application);
     mRepository = new ProyectRepository(application);
     this.mAllMessages = mRepository.getmAllMessages();
-    this.mAllChatUsers = mRepository.getAllChatUsers();
-    this.mAllConversations = mRepository.getAllConversations();
   }
 
   //method get from return all Messages in repository.
   public LiveData<List<Message>> getAllMessages() { return mAllMessages; }
 
-  //method get from return all ChatUsers in repository.
-  public List<ChatUser> getAllChatUsers() { return this.mAllChatUsers; }
-
-  //method get from return all Conversations in repository.
-  public List<Conversation> getmAllConversations() { return mAllConversations; }
-
   //add a new Message in the repository.
   public void insertMessage(Message message) { mRepository.insertMessage(message); }
 
-  //add a new ChatUser in the repository.
-  public void insertChatUser(ChatUser chatUser) { mRepository.insertChatUser(chatUser); }
-
-  //add a new Message in the repository.
-  public void inserConversation(Conversation conversation) { mRepository.insertConversation(conversation);}
-}
+ }

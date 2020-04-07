@@ -19,13 +19,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageListAdapter;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ProyectViewModel;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
   /**
    * ProyectViewModel to start the database instance.
    */
-  private ProyectViewModel mProyectViewModel;
+  private MessageViewModel mMessageViewModel;
 
   /**
    * Code approved to enter a message.
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     try {
       //When your Activity first starts, the ViewModelProviders will create the ViewModel
-      this.mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
+      this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
 
     } catch (RuntimeException e) {
       log.warn(e.getMessage());
@@ -76,13 +75,19 @@ public class MainActivity extends AppCompatActivity {
 
     // add an observer for the LiveData returned by getAlphabetizedMessages().
     //The onChanged() method fires when the observed data changes and the activity is in the foreground.
-    mProyectViewModel.getAllMessages().observe(this, new Observer<List<Message>>() {
+    mMessageViewModel.getAllMessages().observe(this, new Observer<List<Message>>() {
       @Override
       public void onChanged(@Nullable final List<Message> messages) {
         // Update the cached copy of the words in the adapter.
         adapter.setMessages(messages);
       }
     });
+
+    try {
+      log.debug(this.mMessageViewModel.getAllChatUsers().get(0).getName());
+    }catch (NullPointerException e){
+      log.debug(e.getMessage());
+    }
 
     //Start NewMessageActivity when the user taps the FAB.
     FloatingActionButton fab = findViewById(R.id.fab);
@@ -115,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
           null,
           null,
           0);
-      mProyectViewModel.insertMessage(message);
+      mMessageViewModel.insertMessage(message);
       log.info("Message added correctly!");
     } else {
       Toast.makeText(

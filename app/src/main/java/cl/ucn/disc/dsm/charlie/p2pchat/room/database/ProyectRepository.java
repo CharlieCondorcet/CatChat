@@ -75,14 +75,14 @@ public class ProyectRepository {
   public ProyectRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
-    this.mChatUserDao = (ChatUserDao) db.chatUserDao();
-    this.mConversationDao= (ConversationDao) db.conversationDao();
+    //this.mChatUserDao = (ChatUserDao) db.chatUserDao();
+    //this.mConversationDao= (ConversationDao) db.conversationDao();
 
     //FIXME: mAllChatUsers and mAllConversations cannot be inicialized.
     try {
       this.mAllMessages = this.mMessagedDao.getAlphabetizedMessages();
-      this.mAllChatUsers = this.mChatUserDao.getAlphabetizedChatUsers();
-      this.mAllConversations = this.mConversationDao.getAllConversation();
+      //this.mAllChatUsers = this.mChatUserDao.getAlphabetizedChatUsers();
+      //this.mAllConversations = this.mConversationDao.getAllConversation();
 
       log.info("All parameter of Repository initialized correctly!");
     } catch (NullPointerException e) {
