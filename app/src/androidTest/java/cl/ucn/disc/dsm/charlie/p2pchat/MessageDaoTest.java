@@ -64,4 +64,80 @@ public class MessageDaoTest {
     mDb.close();
   }
 
+  // Test that messages can be added to a list in a newly created database.
+  @Test
+  public void insertAndGetMessage() throws Exception {
+    Date date=new Date();
+    Message message = new Message(
+        "A new message inserted to Test",
+        date,
+        null,
+        null,
+        0);
+    mMessageDao.insert(message);
+    List<Message> allMessages = LiveDataTestUtil.
+        getValue(mMessageDao.getAlphabetizedMessages());
+
+    // Newly added message at the start of the new list.
+    assertEquals(allMessages.get(0).getText(), message.getText());
+  }
+
+  // Test to prove that the recovery of all Messages is correct.
+  @Test
+  public void getAllMessages() throws Exception {
+    Date date=new Date();
+    Message message1 = new Message(
+        "first time trying to return all messages",
+        date,
+        null,
+        null,
+        0);
+    mMessageDao.insert(message1);
+
+    date=new Date();
+    Message message2 = new Message(
+        "second time trying to return all messages",
+        date,
+        null,
+        null,
+        0);
+    mMessageDao.insert(message2);
+
+    List<Message> allMessages = LiveDataTestUtil.
+        getValue(mMessageDao.getAlphabetizedMessages());
+
+    // The retrieval of messages by position is equal to the input of messages
+    // in the same position.
+    assertEquals(allMessages.get(0).getText(), message1.getText());
+    assertEquals(allMessages.get(1).getText(), message2.getText());
+  }
+
+  // Test to test the deletion of all Messages that are created in the
+  // temporary database.
+  @Test
+  public void deleteAll() throws Exception {
+    Date date=new Date();
+    Message message1 = new Message(
+        "first time trying to delete all messages",
+        date,
+        null,
+        null,
+        0);
+    mMessageDao.insert(message1);
+
+    date=new Date();
+    Message message2 = new Message(
+        "second time trying to delete all messages",
+        date,
+        null,
+        null,
+        0);
+    mMessageDao.insert(message2);
+    mMessageDao.deleteAll();
+    List<Message> allMessages = LiveDataTestUtil.
+        getValue(mMessageDao.getAlphabetizedMessages());
+
+    // it is verified that the list is empty after applying the elimination order.
+    assertTrue(allMessages.isEmpty());
+  }
 }
