@@ -28,6 +28,7 @@ import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ChatUserRepository;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ConversationRepository;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ChatUserViewModel;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ConversationViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageListAdapter;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
@@ -44,20 +45,16 @@ import org.slf4j.LoggerFactory;
  */
 public class MainActivity extends AppCompatActivity {
 
-  /**
-   * The logger.
-   */
+  //The logger.
   private static final Logger log = LoggerFactory.getLogger(Transformer.class);
 
-  /**
-   * ProyectViewModel to start the database instance.
-   */
   private MessageViewModel mMessageViewModel;
+
   private ChatUserViewModel mChatUserViewModel;
 
-  /**
-   * Code approved to enter a message.
-   */
+  private ConversationViewModel mConversationViewModel;
+
+  //Code approved to enter a message.
   public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
   @Override
@@ -71,13 +68,15 @@ public class MainActivity extends AppCompatActivity {
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+    //When your Activity first starts, the ViewModelProviders will create the ViewModel
     try {
-      //When your Activity first starts, the ViewModelProviders will create the ViewModel
       this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
       this.mChatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
+      this.mConversationViewModel = new ViewModelProvider(this).get(ConversationViewModel.class);
+      log.info("all ViewModel properly instantiated!");
 
     } catch (RuntimeException e) {
-      log.warn(e.getMessage());
+      log.warn("Error when instantiating ViewModel: {}",e.getMessage());
     }
 
     // add an observer for the LiveData returned by getAlphabetizedMessages().

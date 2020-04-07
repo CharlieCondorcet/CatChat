@@ -57,7 +57,6 @@ public class MessageRepository {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
 
-    //FIXME: mAllChatUsers and mAllConversations cannot be inicialized.
     try {
       this.mAllMessages = this.mMessagedDao.getAlphabetizedMessages();
       log.info("All parameter of Repository initialized correctly!");
