@@ -10,43 +10,48 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package cl.ucn.disc.dsm.charlie.p2pchat.room.services;
+package cl.ucn.disc.dsm.charlie.p2pchat.room.database;
 
 import android.app.Application;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
-import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.database.MessageRepository;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.ConversationDao;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
 import java.util.List;
 
 /**
- * the MessageViewModel class to comunicate the UI with the repository.
- *
  * @author Charlie Condorcet.
  */
-public class MessageViewModel extends AndroidViewModel {
+public class ConversationRepository {
 
   /**
-   * Unique repository of the proyect to create and get entities.
+   * The ConversationDao.
    */
-  private MessageRepository mRepository;
+  private ConversationDao mConversationDao;
+
   /**
-   * All Messages instanced in this ModelView to send to Activity.
+   * The List with all Conversation.
    */
-  private LiveData<List<Message>> mAllMessages;
+  private List<Conversation> mAllConversations;
 
-  //ChatDisc ViewModel constructor to get all entities added.
-  public MessageViewModel(Application application) {
-    super(application);
-    mRepository = new MessageRepository(application);
+  public ConversationRepository(Application application) {
+    ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
+    this.mConversationDao = (ConversationDao) db.conversationDao();
 
-    this.mAllMessages = mRepository.getmAllMessages();
+    this.mAllConversations = this.mConversationDao.getAllConversation();
+
   }
 
-  //method get from return all Messages in repository.
-  public LiveData<List<Message>> getAllMessages() { return mAllMessages; }
+  //Return the List with all Conversations.
+  public List<Conversation> getAllConversations() {
+    return mAllConversations;
+  }
 
-  //add a new Message in the repository.
-  public void insertMessage(Message message) { mRepository.insertMessage(message); }
 
- }
+  //Apply the insert function to add a Conversation.
+  public void insertConversation(Conversation conversation) {
+    ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
+      this.mConversationDao.insert(conversation);
+    });
+  }
+}
