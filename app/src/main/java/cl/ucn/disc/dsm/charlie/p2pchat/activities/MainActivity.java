@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
       //When your Activity first starts, the ViewModelProviders will create the ViewModel
       this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
       this.mChatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
-      
+
     } catch (RuntimeException e) {
       log.warn(e.getMessage());
     }

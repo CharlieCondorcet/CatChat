@@ -14,44 +14,31 @@ package cl.ucn.disc.dsm.charlie.p2pchat.room.services;
 
 import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
 import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
-import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ChatUserRepository;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ConversationRepository;
-import cl.ucn.disc.dsm.charlie.p2pchat.room.database.MessageRepository;
 import java.util.List;
 
 /**
- * the MessageViewModel class to comunicate the UI with the repository.
- *
  * @author Charlie Condorcet.
  */
-public class MessageViewModel extends AndroidViewModel {
+public class ConversationViewModel extends AndroidViewModel {
 
-  /**
-   * Unique repository of the proyect to create and get entities.
-   */
-  private MessageRepository messageRepository;
+  private ConversationRepository conversationRepository;
 
-  /**
-   * All Messages instanced in this ModelView to send to Activity.
-   */
-  private LiveData<List<Message>> mAllMessages;
+  private List<Conversation> conversations;
 
-  //ChatDisc ViewModel constructor to get all entities added.
-  public MessageViewModel(Application application) {
+  ConversationViewModel(Application application){
     super(application);
-    this.messageRepository = new MessageRepository(application);
-
-    this.mAllMessages = this.messageRepository.getAllMessages();
+    this.conversationRepository=new ConversationRepository(application);
+    this.conversations=this.conversationRepository.getAllConversations();
   }
 
   //method get from return all Messages in repository.
-  public LiveData<List<Message>> getAllMessages() { return mAllMessages; }
+  public List<Conversation> getAllConversation() { return this.conversations; }
 
   //add a new Message in the repository.
-  public void insertMessage(Message message) { messageRepository.insertMessage(message); }
+  public void insert(Conversation conversation) { this.conversationRepository.insertConversation(conversation); }
 
- }
+}
