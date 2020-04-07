@@ -33,7 +33,7 @@ public class Message {
   /**
    * The IdMessage.
    */
-  @PrimaryKey
+  @PrimaryKey(autoGenerate = true)
   @NonNull
   @ColumnInfo(name="message")
   private int IdMessage;
@@ -75,9 +75,8 @@ public class Message {
    * @param Longitude.
    * @param ErrorData.
    */
-  public Message(int IdMessage, String Text, Date Created, String Latitude,
+  public Message( String Text, Date Created, String Latitude,
       String Longitude, int ErrorData) {
-    this.IdMessage = IdMessage;
     this.Text = Text;
     this.Created = Created;
     this.Latitude = Latitude;

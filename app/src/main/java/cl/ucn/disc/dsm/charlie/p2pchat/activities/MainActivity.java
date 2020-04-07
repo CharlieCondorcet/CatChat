@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
       //When your Activity first starts, the ViewModelProviders will create the ViewModel
       this.mProyectViewModel = new ViewModelProvider(this).get(ProyectViewModel.class);
 
-    }catch (Exception e){
-      log.warn("unknown error to instance the ProyectViewModel, information about: {}",e);
+    } catch (RuntimeException e) {
+      log.warn(e.getMessage());
     }
 
     // add an observer for the LiveData returned by getAlphabetizedMessages().
@@ -92,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
           Intent intent = new Intent(MainActivity.this, NewMessageActivity.class);
           startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
           log.info("Activity change started successfully!");
-        }catch (Exception e){
-          log.warn("The activity could not start, information about the problem: {}",e);
+        } catch (Exception e) {
+          log.warn("The activity could not start, information about the problem: {}", e.getMessage());
         }
       }
 
@@ -101,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
   }
 
-  private int cantMessages = 3;
 
   //If the activity returns with RESULT_OK, insert the returned word into the
   // database by calling the insert() method of the WordViewModel.
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     super.onActivityResult(requestCode, resultCode, data);
 
     if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-      Message message = new Message(cantMessages,
+      Message message = new Message(
           data.getStringExtra(NewMessageActivity.EXTRA_REPLY),
           null,
           null,
@@ -124,11 +124,10 @@ public class MainActivity extends AppCompatActivity {
           Toast.LENGTH_LONG).show();
       log.warn("Problems adding message: Void Message");
     }
-    cantMessages++;
   }
 
-  public void backToLogin(View view){
-    Intent intent=new Intent(this, LoginActivity.class);
+  public void backToLogin(View view) {
+    Intent intent = new Intent(this, LoginActivity.class);
     startActivity(intent);
 
   }

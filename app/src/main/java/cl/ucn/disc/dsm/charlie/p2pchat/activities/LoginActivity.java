@@ -21,6 +21,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ProyectViewModel;
+import java.io.Serializable;
 import javax.xml.transform.Transformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

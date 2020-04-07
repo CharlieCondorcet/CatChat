@@ -31,6 +31,7 @@ public class NewMessageActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_new_message);
+
     mEditMessageView = findViewById(R.id.edit_message);
 
     final Button button = findViewById(R.id.button_save);

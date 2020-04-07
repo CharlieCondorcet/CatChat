@@ -34,7 +34,7 @@ import java.util.concurrent.Executors;
  */
 //TODO: change the exportSchema to listen the Backend.
 @Database(entities = {Message.class, ChatUser.class,
-    Conversation.class}, version = 3, exportSchema = false)
+    Conversation.class}, version = 4, exportSchema = false)
 public abstract class ProyectRoomDatabase extends RoomDatabase {
 
   //Dao instance to Message.
@@ -63,7 +63,6 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
               ProyectRoomDatabase.class, "proyect_database")
               .addCallback(sRoomDatabaseCallback)
               //add a migration delete to start a new migration with a new DB.
-              .fallbackToDestructiveMigration()
               .build();
         }
       }
@@ -85,9 +84,9 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
         MessageDao dao = INSTANCE.messageDao();
         dao.deleteAll();
 
-        Message message = new Message(1, "Hey there!", null, null, null, 0);
+        Message message = new Message( "Hey there!", null, null, null, 0);
         dao.insert(message);
-        message = new Message(2, "I am using CatChat.", null, null, null, 0);
+        message = new Message( "I am using CatChat.", null, null, null, 0);
         dao.insert(message);
 
         //Use the order from the corresponding table.
@@ -95,9 +94,9 @@ public abstract class ProyectRoomDatabase extends RoomDatabase {
         chatUserDao.deleteAll();
 
         //Add 2 users to example.
-        ChatUser user = new ChatUser("tommy", 123123, "tommy99@gmail.com", "HolaHola123");
+        ChatUser user = new ChatUser("tommy", "tommy99@gmail.com", "HolaHola123");
         chatUserDao.insert(user);
-        user = new ChatUser("camila", 999333, "camiflower31@aol.com", "12345678abC");
+        user = new ChatUser("camila", "camiflower31@aol.com", "12345678abC");
         chatUserDao.insert(user);
 
       });

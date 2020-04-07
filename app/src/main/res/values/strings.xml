@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">P2PChat</string>
+  <string name="app_name">CatChat</string>
   <string name="add_message">Add message</string>
   <string name="hint_message">Message..</string>
   <string name="button_save">Save</string>

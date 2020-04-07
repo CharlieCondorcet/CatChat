@@ -28,7 +28,7 @@ public class Conversation {
   /**
    * The ID of the Conversation.
    */
-  @PrimaryKey
+  @PrimaryKey(autoGenerate = true)
   @NonNull
   @ColumnInfo(name="conversation")
   private int IdConversation;
@@ -50,8 +50,7 @@ public class Conversation {
    * @param IdFirstUser
    * @param IdSecondUser
    */
-  public Conversation(int IdConversation, int IdFirstUser, int IdSecondUser) {
-    IdConversation = IdConversation;
+  public Conversation( int IdFirstUser, int IdSecondUser) {
     IdFirstUser = IdFirstUser;
     IdSecondUser = IdSecondUser;
   }

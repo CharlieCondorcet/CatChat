@@ -33,7 +33,7 @@ public class ChatUser {
   /**
    * The Id.
    */
-  @PrimaryKey
+  @PrimaryKey(autoGenerate = true)
   @NonNull
   @ColumnInfo(name = "chat_user")
   private int Id;
@@ -56,9 +56,8 @@ public class ChatUser {
    * @param Email.
    * @param Password.
    */
-  public ChatUser(String Name, int Id, String Email, String Password) {
+  public ChatUser(String Name, String Email, String Password) {
     this.Name = Name;
-    this.Id = Id;
     this.Email = Email;
     this.Password = Password;
   }

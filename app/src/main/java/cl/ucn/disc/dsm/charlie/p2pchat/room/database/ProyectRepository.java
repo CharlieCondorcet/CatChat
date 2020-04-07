@@ -20,6 +20,7 @@ import cl.ucn.disc.dsm.charlie.p2pchat.entities.Message;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.ConversationDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
+import java.util.ArrayList;
 import java.util.List;
 import javax.xml.transform.Transformer;
 import org.slf4j.Logger;
@@ -55,7 +56,7 @@ public class ProyectRepository {
   /**
    * The ConversationDao.
    */
-  private ConversationDao mConversation;
+  private ConversationDao mConversationDao;
 
   /**
    * The List with all Conversation.
@@ -74,17 +75,20 @@ public class ProyectRepository {
   public ProyectRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
+    this.mChatUserDao = (ChatUserDao) db.chatUserDao();
+    this.mConversationDao= (ConversationDao) db.conversationDao();
 
     //FIXME: mAllChatUsers and mAllConversations cannot be inicialized.
     try {
       this.mAllMessages = this.mMessagedDao.getAlphabetizedMessages();
       this.mAllChatUsers = this.mChatUserDao.getAlphabetizedChatUsers();
-      this.mAllConversations = this.mConversation.getAllConversation();
+      this.mAllConversations = this.mConversationDao.getAllConversation();
 
       log.info("All parameter of Repository initialized correctly!");
     } catch (NullPointerException e) {
       log.warn("Method getAll% return Null values, uninitialized parameters: {}",e);
     }
+
   }
 
   // Room executes all queries on a separate thread.
@@ -122,7 +126,7 @@ public class ProyectRepository {
   //Apply the insert function to add a Conversation.
   public void insertConversation(Conversation conversation) {
     ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
-      this.mConversation.insert(conversation);
+      this.mConversationDao.insert(conversation);
     });
   }
 
