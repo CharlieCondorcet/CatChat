@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Charlie Condorcet.
  */
-public class ProyectRepository {
+public class MessageRepository {
 
   /**
    * The MessagenDao.
@@ -43,25 +43,6 @@ public class ProyectRepository {
    */
   private LiveData<List<Message>> mAllMessages;
 
-  /**
-   * The ChatUserDao.
-   */
-  private ChatUserDao mChatUserDao;
-
-  /**
-   * The List with all ChatUsers.
-   */
-  private List<ChatUser> mAllChatUsers;
-
-  /**
-   * The ConversationDao.
-   */
-  private ConversationDao mConversationDao;
-
-  /**
-   * The List with all Conversation.
-   */
-  private List<Conversation> mAllConversations;
 
   /**
    * The logger.
@@ -72,18 +53,13 @@ public class ProyectRepository {
   // dependency. This adds complexity and much more code, and this sample is not about testing.
   // See the BasicSample in the android-architecture-components repository at
   // https://github.com/googlesamples
-  public ProyectRepository(Application application) {
+  public MessageRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mMessagedDao = (MessageDao) db.messageDao();
-    //this.mChatUserDao = (ChatUserDao) db.chatUserDao();
-    //this.mConversationDao= (ConversationDao) db.conversationDao();
 
     //FIXME: mAllChatUsers and mAllConversations cannot be inicialized.
     try {
       this.mAllMessages = this.mMessagedDao.getAlphabetizedMessages();
-      //this.mAllChatUsers = this.mChatUserDao.getAlphabetizedChatUsers();
-      //this.mAllConversations = this.mConversationDao.getAllConversation();
-
       log.info("All parameter of Repository initialized correctly!");
     } catch (NullPointerException e) {
       log.warn("Method getAll% return Null values, uninitialized parameters: {}",e);
@@ -97,17 +73,6 @@ public class ProyectRepository {
     return this.mAllMessages;
   }
 
-  //Return the List with all ChatUsers.
-  public List<ChatUser> getAllChatUsers() {
-    return mAllChatUsers;
-  }
-
-  //Return the List with all Conversations.
-  public List<Conversation> getAllConversations() {
-    return mAllConversations;
-  }
-
-
   // You must call this on a non-UI thread or your app will throw an exception. Room ensures
   // that you're not doing any long running operations on the main thread, blocking the UI.
   public void insertMessage(Message message) {
@@ -116,18 +81,5 @@ public class ProyectRepository {
     });
   }
 
-  //Apply the insert function to add a ChatUser.
-  public void insertChatUser(ChatUser chatUser) {
-    ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
-      this.mChatUserDao.insert(chatUser);
-    });
-  }
-
-  //Apply the insert function to add a Conversation.
-  public void insertConversation(Conversation conversation) {
-    ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
-      this.mConversationDao.insert(conversation);
-    });
-  }
 
 }
