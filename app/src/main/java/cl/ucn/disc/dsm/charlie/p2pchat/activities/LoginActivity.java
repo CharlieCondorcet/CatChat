@@ -13,11 +13,21 @@
 package cl.ucn.disc.dsm.charlie.p2pchat.activities;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
+import cl.ucn.disc.dsm.charlie.p2pchat.entities.ChatUser;
+import cl.ucn.disc.dsm.charlie.p2pchat.room.services.ChatUserViewModel;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.transform.Transformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +38,13 @@ public class LoginActivity extends AppCompatActivity {
   // The logger.
   private static final Logger log = LoggerFactory.getLogger(Transformer.class);
 
+  //The ViewModel to ChatUser.
+  private ChatUserViewModel mChatUserViewModel;
+
   // Main parameters to identify the ChatUser.
   private EditText email_login;
   private EditText password_login;
+  private Button btn_login;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +66,28 @@ public class LoginActivity extends AppCompatActivity {
   public void startConversation(View view) {
     Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);
+  }
+
+  public void verifyAccount(View view, List<ChatUser> usersInLogin) {
+
+    String str_email = email_login.getText().toString();
+    String str_pass = password_login.getText().toString();
+
+    for (int i = 0; i < usersInLogin.size(); i++) {
+      try{
+        if (str_email.equals(usersInLogin.get(i).getEmail()) && str_pass
+            .equals(usersInLogin.get(i).getPassword())) {
+          Toast.makeText(this , "cuenta verificada!", Toast.LENGTH_SHORT).show();
+          startConversation(view);
+        } else {
+          Toast.makeText(this, "el correo proporcionado o la contrasenia no se reconocen!", Toast.LENGTH_SHORT).show();
+        }
+      }catch (Exception e){
+        log.warn("la cuenta no ha podido ser verificada: {}",e.getMessage());
+      }
+
+    }
+
   }
 
 }

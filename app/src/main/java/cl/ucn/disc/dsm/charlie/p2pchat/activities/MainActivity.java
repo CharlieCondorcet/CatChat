@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
   //The ViewModel to Message.
   private MessageViewModel mMessageViewModel;
 
-  //The ViewModel to ChatUser.
-  private ChatUserViewModel mChatUserViewModel;
-
   //The ViewModel to Conversation.
   private ConversationViewModel mConversationViewModel;
 
@@ -75,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
     try {
       //Create persistent instances for the activity.
       this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
-      this.mChatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
       this.mConversationViewModel = new ViewModelProvider(this).get(ConversationViewModel.class);
 
       log.info("all ViewModel properly instantiated!");

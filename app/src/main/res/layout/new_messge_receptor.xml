@@ -42,7 +42,7 @@ android:layout_height="wrap_content">
     android:textAlignment="textEnd">
     <TextView
       android:id="@+id/tv_t_new_message_user"
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/sample_user"
       android:textColor="@color/black"
@@ -50,7 +50,7 @@ android:layout_height="wrap_content">
       tools:ignore="SmallSp" />
     <TextView
       android:id="@+id/tv_t_new_message_time"
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/sample_date"
       android:textColor="@color/black"
