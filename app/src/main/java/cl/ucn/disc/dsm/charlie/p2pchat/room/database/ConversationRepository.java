@@ -20,6 +20,8 @@ import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
 import java.util.List;
 
 /**
+ * The Repository class to comunicate the DB with Conversation in the app.
+ *
  * @author Charlie Condorcet.
  */
 public class ConversationRepository {
@@ -34,6 +36,7 @@ public class ConversationRepository {
    */
   private List<Conversation> mAllConversations;
 
+  // The constructor to ConversationRepository.
   public ConversationRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mConversationDao = (ConversationDao) db.conversationDao();
@@ -42,13 +45,13 @@ public class ConversationRepository {
 
   }
 
-  //Return the List with all Conversations.
+  // Return the List with all Conversations.
   public List<Conversation> getAllConversations() {
     return mAllConversations;
   }
 
 
-  //Apply the insert function to add a Conversation.
+  // Apply the insert function to add a Conversation.
   public void insertConversation(Conversation conversation) {
     ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
       this.mConversationDao.insert(conversation);

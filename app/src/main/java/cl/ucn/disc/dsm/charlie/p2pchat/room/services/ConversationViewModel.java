@@ -21,6 +21,8 @@ import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ConversationRepository;
 import java.util.List;
 
 /**
+ * The ConversationViewModel class to comunicate the UI with the repository.
+ *
  * @author Charlie Condorcet.
  */
 public class ConversationViewModel extends AndroidViewModel {
@@ -42,10 +44,10 @@ public class ConversationViewModel extends AndroidViewModel {
     this.conversations=this.conversationRepository.getAllConversations();
   }
 
-  //method get from return all Conversations in repository.
+  // Method get from return all Conversations in repository.
   public List<Conversation> getAllConversation() { return this.conversations; }
 
-  //add a new Conversation in the repository.
+  // Add a new Conversation in the repository.
   public void insert(Conversation conversation) { this.conversationRepository.insertConversation(conversation); }
 
 }

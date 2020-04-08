@@ -34,11 +34,11 @@ public interface ChatUserDao {
   @Insert
   void insert(ChatUser chatUser);
 
-  //Delete all Conversations.
+  // Delete all Conversations.
   @Query("DELETE FROM chat_user_table")
   void deleteAll();
 
-  //Request all ChatUsers.
+  // Request all ChatUsers.
   @Query("SELECT * from chat_user_table ORDER BY chat_user ASC")
   List<ChatUser> getAlphabetizedChatUsers();
 

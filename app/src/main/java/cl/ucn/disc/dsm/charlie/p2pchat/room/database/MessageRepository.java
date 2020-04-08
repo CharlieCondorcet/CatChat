@@ -43,13 +43,12 @@ public class MessageRepository {
    */
   private LiveData<List<Message>> mAllMessages;
 
-
   /**
    * The logger.
    */
   private static final Logger log = LoggerFactory.getLogger(Transformer.class);
 
-  // Note that in order to unit test the WordRepository, you have to remove the Application
+  // Note that in order to unit test the MessageRepository, you have to remove the Application
   // dependency. This adds complexity and much more code, and this sample is not about testing.
   // See the BasicSample in the android-architecture-components repository at
   // https://github.com/googlesamples

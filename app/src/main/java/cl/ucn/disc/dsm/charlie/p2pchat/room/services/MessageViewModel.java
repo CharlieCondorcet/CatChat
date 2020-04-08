@@ -48,10 +48,10 @@ public class MessageViewModel extends AndroidViewModel {
     this.mAllMessages = this.messageRepository.getAllMessages();
   }
 
-  //method get from return all Messages in repository.
+  // Method get from return all Messages in repository.
   public LiveData<List<Message>> getAllMessages() { return mAllMessages; }
 
-  //add a new Message in the repository.
+  // Add a new Message in the repository.
   public void insertMessage(Message message) { messageRepository.insertMessage(message); }
 
  }

@@ -46,19 +46,19 @@ import org.slf4j.LoggerFactory;
  */
 public class MainActivity extends AppCompatActivity {
 
-  //The logger.
+  // The logger.
   private static final Logger log = LoggerFactory.getLogger(Transformer.class);
 
-  //The ViewModel to Message.
+  // The ViewModel to Message.
   private MessageViewModel mMessageViewModel;
 
-  //The ViewModel to ChatUser.
+  // The ViewModel to ChatUser.
   private ChatUserViewModel mChatUserViewModel;
 
-  //The ViewModel to Conversation.
+  // The ViewModel to Conversation.
   private ConversationViewModel mConversationViewModel;
 
-  //Code approved to enter a message.
+  // Code approved to enter a message.
   public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
   @Override
@@ -66,15 +66,15 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    //Show the data (messages) in the recycler view.
+    // Show the data (messages) in the recycler view.
     RecyclerView recyclerView = findViewById(R.id.recyclerview);
     final MessageListAdapter adapter = new MessageListAdapter(this);
     recyclerView.setAdapter(adapter);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-    //When your Activity first starts, the ViewModelProviders will create the ViewModel.
+    // When your Activity first starts, the ViewModelProviders will create the ViewModel.
     try {
-      //Create persistent instances for the activity.
+      // Create persistent instances for the activity.
       this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
       this.mChatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
       this.mConversationViewModel = new ViewModelProvider(this).get(ConversationViewModel.class);

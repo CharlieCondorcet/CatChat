@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
   // The logger.
   private static final Logger log = LoggerFactory.getLogger(Transformer.class);
 
-  //The ViewModel to ChatUser.
+  // The ViewModel to ChatUser.
   private ChatUserViewModel mChatUserViewModel;
 
   // Main parameters to identify the ChatUser.

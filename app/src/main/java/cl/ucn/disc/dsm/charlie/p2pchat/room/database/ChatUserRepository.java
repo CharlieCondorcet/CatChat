@@ -20,6 +20,8 @@ import cl.ucn.disc.dsm.charlie.p2pchat.room.MessageDao;
 import java.util.List;
 
 /**
+ * The Repository class to comunicate the DB with ChatUser in the app.
+ *
  * @author Charlie Condorcet.
  */
 public class ChatUserRepository {
@@ -34,18 +36,19 @@ public class ChatUserRepository {
    */
   private List<ChatUser> mAllChatUsers;
 
+  // The constructor to ChatUserRepository.
   public ChatUserRepository(Application application) {
     ProyectRoomDatabase db = ProyectRoomDatabase.getDatabase(application);
     this.mChatUserDao = (ChatUserDao) db.chatUserDao();
     this.mAllChatUsers = this.mChatUserDao.getAlphabetizedChatUsers();
   }
 
-  //Return the List with all ChatUsers.
+  // Return the List with all ChatUsers.
   public List<ChatUser> getAllChatUsers() {
     return mAllChatUsers;
   }
 
-  //Apply the insert function to add a ChatUser.
+  // Apply the insert function to add a ChatUser.
   public void insertChatUser(ChatUser chatUser) {
     ProyectRoomDatabase.databaseWriteExecutor.execute(() -> {
       this.mChatUserDao.insert(chatUser);

@@ -22,6 +22,8 @@ import cl.ucn.disc.dsm.charlie.p2pchat.room.database.MessageRepository;
 import java.util.List;
 
 /**
+ * The ChatUserViewModel class to comunicate the UI with the repository.
+ *
  * @author Charlie Condorcet.
  */
 public class ChatUserViewModel extends AndroidViewModel {
