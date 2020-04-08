@@ -76,20 +76,26 @@ public class LoginActivity extends AppCompatActivity {
     String str_email = email_login.getText().toString();
     String str_pass = password_login.getText().toString();
 
+    int hash_email = str_email.hashCode();
+    int hash_pass = str_pass.hashCode();
+
     for (int i = 0; i < usersInLogin.size(); i++) {
-      try{
-        if (str_email.equals(usersInLogin.get(i).getEmail()) && str_pass
-            .equals(usersInLogin.get(i).getPassword())) {
-          Toast.makeText(this , "Account verified successfully!", Toast.LENGTH_SHORT).show();
+      try {
+        // Compare data via hash.
+        if (hash_email == (usersInLogin.get(i).getEmail().hashCode()) && hash_pass == (usersInLogin
+            .get(i).getPassword().hashCode())) {
+          Toast.makeText(this, "Account verified successfully!", Toast.LENGTH_SHORT).show();
           startConversation(view);
         } else {
-          Toast.makeText(this, "The email provided or the password is not recognized!", Toast.LENGTH_SHORT).show();
+          Toast.makeText(this, "The email provided or the password is not recognized!",
+              Toast.LENGTH_SHORT).show();
         }
-      }catch (Exception e){
-        log.warn("The account could not be verified: {}",e.getMessage());
+      } catch (Exception e) {
+        log.warn("The account could not be verified: {}", e.getMessage());
       }
     }
   }
+
 
 }
 
