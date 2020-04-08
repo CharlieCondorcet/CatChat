@@ -19,5 +19,7 @@
 
   <string name="new_message_title">Enter your message!</string>
 
+  <string name="sample_user">Armstrong</string>
+  <string name="sample_date">16/07/1969</string>
 
 </resources>

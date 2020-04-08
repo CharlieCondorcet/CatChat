@@ -35,7 +35,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
 
     private MessageViewHolder(View itemView) {
       super(itemView);
-      messageItemView = itemView.findViewById(R.id.textView);
+      messageItemView = itemView.findViewById(R.id.tv_t_new_message_message);
     }
   }
 
