@@ -51,37 +51,15 @@ public class Message {
   private Date Created;
 
   /**
-   * The Latitude.
-   */
-  private String Latitude;
-
-  /**
-   * The Longitude.
-   */
-  private String Longitude;
-
-  /**
-   * The ErrorData.
-   */
-  private int ErrorData;
-
-  /**
    * The Constructor.
    *
    * @param IdMessage.
    * @param Text.
    * @param Created.
-   * @param Latitude.
-   * @param Longitude.
-   * @param ErrorData.
    */
-  public Message( String Text, Date Created, String Latitude,
-      String Longitude, int ErrorData) {
+  public Message( String Text, Date Created) {
     this.Text = Text;
     this.Created = Created;
-    this.Latitude = Latitude;
-    this.Longitude = Longitude;
-    this.ErrorData = ErrorData;
   }
 
   /**
@@ -106,25 +84,6 @@ public class Message {
   }
 
   /**
-   * @return The Latitude.
-   */
-  public String getLatitude() {
-    return Latitude;
-  }
-
-  /**
-   * @return The Longitude.
-   */
-  public String getLongitude() {
-    return Longitude;
-  }
-
-  /**
-   * @return The ErrorData.
-   */
-  public int getErrorData() { return ErrorData; }
-
-  /**
    * @param idMessage.
    */
   public void setIdMessage(int idMessage) {
@@ -145,24 +104,4 @@ public class Message {
     Created = created;
   }
 
-  /**
-   * @param latitude.
-   */
-  public void setLatitude(String latitude) {
-    Latitude = latitude;
-  }
-
-  /**
-   * @param longitude.
-   */
-  public void setLongitude(String longitude) {
-    Longitude = longitude;
-  }
-
-  /**
-   * @param errorData.
-   */
-  public void setErrorData(int errorData) {
-    ErrorData = errorData;
-  }
 }

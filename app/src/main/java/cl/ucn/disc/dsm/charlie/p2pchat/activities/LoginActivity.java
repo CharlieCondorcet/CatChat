@@ -51,6 +51,9 @@ public class LoginActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_login);
 
+    //TODO: Get the total user list from the database.
+    //FIX: The ViewModel cannot be called to instantiate the list with all ChatUser.
+
     this.email_login = (EditText) findViewById(R.id.et_e_login_email);
     this.password_login = (EditText) findViewById(R.id.et_p_login_password);
 
@@ -68,8 +71,8 @@ public class LoginActivity extends AppCompatActivity {
     startActivity(intent);
   }
 
+  // Method to verify that the data entered in LoginActivity exist.
   public void verifyAccount(View view, List<ChatUser> usersInLogin) {
-
     String str_email = email_login.getText().toString();
     String str_pass = password_login.getText().toString();
 
@@ -77,17 +80,15 @@ public class LoginActivity extends AppCompatActivity {
       try{
         if (str_email.equals(usersInLogin.get(i).getEmail()) && str_pass
             .equals(usersInLogin.get(i).getPassword())) {
-          Toast.makeText(this , "cuenta verificada!", Toast.LENGTH_SHORT).show();
+          Toast.makeText(this , "Account verified successfully!", Toast.LENGTH_SHORT).show();
           startConversation(view);
         } else {
-          Toast.makeText(this, "el correo proporcionado o la contrasenia no se reconocen!", Toast.LENGTH_SHORT).show();
+          Toast.makeText(this, "The email provided or the password is not recognized!", Toast.LENGTH_SHORT).show();
         }
       }catch (Exception e){
-        log.warn("la cuenta no ha podido ser verificada: {}",e.getMessage());
+        log.warn("The account could not be verified: {}",e.getMessage());
       }
-
     }
-
   }
 
 }

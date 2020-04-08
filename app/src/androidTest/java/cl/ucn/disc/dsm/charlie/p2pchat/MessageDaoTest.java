@@ -70,10 +70,7 @@ public class MessageDaoTest {
     Date date=new Date();
     Message message = new Message(
         "A new message inserted to Test",
-        date,
-        null,
-        null,
-        0);
+        date);
     mMessageDao.insert(message);
     List<Message> allMessages = LiveDataTestUtil.
         getValue(mMessageDao.getAlphabetizedMessages());
@@ -88,19 +85,13 @@ public class MessageDaoTest {
     Date date=new Date();
     Message message1 = new Message(
         "first time trying to return all messages",
-        date,
-        null,
-        null,
-        0);
+        date);
     mMessageDao.insert(message1);
 
     date=new Date();
     Message message2 = new Message(
         "second time trying to return all messages",
-        date,
-        null,
-        null,
-        0);
+        date);
     mMessageDao.insert(message2);
 
     List<Message> allMessages = LiveDataTestUtil.
@@ -119,19 +110,13 @@ public class MessageDaoTest {
     Date date=new Date();
     Message message1 = new Message(
         "first time trying to delete all messages",
-        date,
-        null,
-        null,
-        0);
+        date);
     mMessageDao.insert(message1);
 
     date=new Date();
     Message message2 = new Message(
         "second time trying to delete all messages",
-        date,
-        null,
-        null,
-        0);
+        date);
     mMessageDao.insert(message2);
     mMessageDao.deleteAll();
     List<Message> allMessages = LiveDataTestUtil.

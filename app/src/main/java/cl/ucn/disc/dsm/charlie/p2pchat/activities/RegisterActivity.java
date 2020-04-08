@@ -35,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     //TODO: the email and password can be getted by loginActivity.
     // Change the opcion to recept this parameters.
+
     this.name_register = (EditText) findViewById(R.id.txt_pt_register_user_name);
     this.email_register = (EditText) findViewById(R.id.txt_em_register_email);
     this.password_register = (EditText) findViewById(R.id.txt_p_register_pass);

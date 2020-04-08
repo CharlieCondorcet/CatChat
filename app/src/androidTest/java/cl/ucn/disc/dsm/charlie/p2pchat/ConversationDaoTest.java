@@ -25,6 +25,7 @@ import cl.ucn.disc.dsm.charlie.p2pchat.entities.Conversation;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.ChatUserDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.ConversationDao;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.database.ProyectRoomDatabase;
+import java.io.Console;
 import java.util.List;
 import org.junit.After;
 import org.junit.Before;

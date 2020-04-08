@@ -33,6 +33,7 @@ import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageListAdapter;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import java.util.Date;
 import java.util.List;
 import javax.xml.transform.Transformer;
 import org.slf4j.Logger;
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
   //The ViewModel to Message.
   private MessageViewModel mMessageViewModel;
+
+  //The ViewModel to ChatUser.
+  private ChatUserViewModel mChatUserViewModel;
 
   //The ViewModel to Conversation.
   private ConversationViewModel mConversationViewModel;
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     try {
       //Create persistent instances for the activity.
       this.mMessageViewModel = new ViewModelProvider(this).get(MessageViewModel.class);
+      this.mChatUserViewModel = new ViewModelProvider(this).get(ChatUserViewModel.class);
       this.mConversationViewModel = new ViewModelProvider(this).get(ConversationViewModel.class);
 
       log.info("all ViewModel properly instantiated!");
@@ -116,12 +121,10 @@ public class MainActivity extends AppCompatActivity {
     super.onActivityResult(requestCode, resultCode, data);
 
     if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+      Date date = new Date();
       Message message = new Message(
           data.getStringExtra(NewMessageActivity.EXTRA_REPLY),
-          null,
-          null,
-          null,
-          0);
+          date);
       mMessageViewModel.insertMessage(message);
       log.info("Message added correctly!");
     } else {
