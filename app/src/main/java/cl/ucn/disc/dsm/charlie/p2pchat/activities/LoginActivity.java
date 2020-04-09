@@ -38,9 +38,6 @@ public class LoginActivity extends AppCompatActivity {
   // The logger.
   private static final Logger log = LoggerFactory.getLogger(Transformer.class);
 
-  // The ViewModel to ChatUser.
-  private ChatUserViewModel mChatUserViewModel;
-
   // Main parameters to identify the ChatUser.
   private EditText email_login;
   private EditText password_login;
@@ -62,11 +59,25 @@ public class LoginActivity extends AppCompatActivity {
   // Temporary connection (in terms of structure) to change activity to RegisterActivity.
   public void startRegister(View view) {
     Intent intent = new Intent(this, RegisterActivity.class);
+
+    /*
+    String actualEmail;
+    String actualPass;
+
+    if(!email_login.getText().toString().isEmpty()){
+      actualEmail=email_login.getText().toString();
+      actualPass=password_login.getText().toString();
+      intent.putExtra("EmailFromLogin",actualEmail);
+      intent.putExtra("PassFromLogin",actualPass);
+    }
+     */
+
     startActivity(intent);
   }
 
   // Temporary connection (in terms of structure) to change activity to MainActivity.
   public void startConversation(View view) {
+
     Intent intent = new Intent(this, MainActivity.class);
     startActivity(intent);
   }

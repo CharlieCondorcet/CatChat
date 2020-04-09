@@ -33,6 +33,7 @@ import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageListAdapter;
 import cl.ucn.disc.dsm.charlie.p2pchat.room.services.MessageViewModel;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.xml.transform.Transformer;
@@ -138,7 +139,12 @@ public class MainActivity extends AppCompatActivity {
 
   // Temporary connection (in terms of structure) to change activity to LoginActivity.
   public void backToLogin(View view) {
+    //ArrayList<ChatUser> ActualUsersList = (ArrayList<ChatUser>) this.mChatUserViewModel
+    //    .getAllChatUsers();
+
     Intent intent = new Intent(this, LoginActivity.class);
+    //intent.putExtra("usersList", ActualUsersList);
+
     startActivity(intent);
   }
 

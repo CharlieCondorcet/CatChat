@@ -18,6 +18,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import cl.ucn.disc.dsm.charlie.p2pchat.R;
+import java.util.ArrayList;
 import java.util.EmptyStackException;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -40,6 +41,16 @@ public class RegisterActivity extends AppCompatActivity {
     this.email_register = (EditText) findViewById(R.id.txt_em_register_email);
     this.password_register = (EditText) findViewById(R.id.txt_p_register_pass);
     this.pass_confirm_register = (EditText) findViewById(R.id.txt_p_register_pass_confirm);
+
+    /*
+    if(!getIntent().getSerializableExtra("EmailFromLogin").toString().isEmpty()){
+      String actualEmail=(String) getIntent().getSerializableExtra("EmailFromLogin");
+      String actualPass=(String) getIntent().getSerializableExtra("PassFromLogin");
+
+      this.email_register.setText(actualEmail);
+      this.password_register.setText(actualPass);
+    }
+     */
 
   }
 

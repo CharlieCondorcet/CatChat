@@ -35,7 +35,7 @@ import java.util.concurrent.Executors;
  */
 //TODO: change the exportSchema to listen the Backend.
 @Database(entities = {Message.class, ChatUser.class,
-    Conversation.class}, version = 4, exportSchema = false)
+    Conversation.class}, version = 5, exportSchema = false)
 public abstract class ProyectRoomDatabase extends RoomDatabase {
 
   // Dao instance to Message.
