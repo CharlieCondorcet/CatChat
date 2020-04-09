@@ -8,6 +8,7 @@ AndroidStudio - Chat  -  ROOM  - DocumentationGoogleJavaStyle  -  [Backend](http
 > The application to chat with anyone!
 
 
+
 ## Index
 
 * [Objetives](#objetives)
@@ -24,9 +25,11 @@ AndroidStudio - Chat  -  ROOM  - DocumentationGoogleJavaStyle  -  [Backend](http
 * [Contact](#contact)
 
 
+
 ## Objetives
 Develop an application to chat with other people.
 Develop the backend to ChatDisc.
+
 
 
 ## Description/Instrutions
@@ -37,6 +40,7 @@ connection, login to authenticate and find other users, in addition to other
 features that make the use of chat comfortable.
 
 
+
 # DomainModel
 
  <b>The Domain Model </b>
@@ -45,18 +49,22 @@ features that make the use of chat comfortable.
  
  The USER has 0 or many MESSAGES, each MESSAGE has a single user.
  A CONVERSATION has 2 USERS, a USER has 1 or more CONVERSATIONS.
+ 
  The idea is to relate the data such that whenever there is a user at least 
  have a conversation, with another user, this is so as not to have a blank 
  screen when you just start the session, but immediately request by ID to find 
  another user, a Once inside the conversation it is not mandatory to send 
  messages.
+ 
  Later, if you want to search for another user, you are given the option to 
  switch from Activity to another conversation.
+
 
 
 ## Backend
 You can find the backend developed specifically for this application in
 [ChatDiscBackend](https://github.com/CharlieCondorcet/ChatDiscBackend).
+
 
 
 ## Screenshots
@@ -81,12 +89,14 @@ You can find the backend developed specifically for this application in
  ![Screenshot](./img/app_ui_register.png)
 
 
+
 ## Features
 coming soon:
  - Landscape Mode
  - Nocture Mode.
  - Update The Toolbar.
  - Register With Other Account(Google, Facebook, Twitter).
+
 
 
 ## Technologies
@@ -100,34 +110,46 @@ For the complete Project, the following were used:
 - multiple repositories to consume an API<br>
 
 
+
 ## Sources
 - [Android ROOM](https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#0)
+
 
 
 ## Status/ToDo
  The graphical interface of the application and the navigation through the 
  Activities is this achieved.
+ 
  The tests to do all the basic operations for each entity are approved.
+ 
  The logic of the chat is missing, to connect the user with their messages 
  and their conversation.
- the messages do not show the user or current time.
- the main chat room (MainActivity in this case) must be a conversation 
+ 
+ The messages do not show the user or current time.
+ 
+ The main chat room (MainActivity in this case) must be a conversation 
  which calls the other related entities.
+ 
  
  
  ## Issues
  Activity doesn't accept me a way to share DB lists with all current records.
+ 
  I can only instantiate the ViewModel in the MainActivity, if I try to 
  instantiate elsewhere the app does not open.
+ 
  The logcat warn a lot of task overload, that many processes are executed 
  in few threads.
+ 
  There are performance problems, if the PC was not with all other programs 
  closed, the app may take time to start and a "interface does not respond" 
  message appears.
  
  
+ 
 ## License
 Licenced by [MIT License](https://github.com/CharlieCondorcet/ChatDisc/blob/master/LICENSE)
+
 
 
 ## Contact
