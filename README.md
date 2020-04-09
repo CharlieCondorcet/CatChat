@@ -12,12 +12,14 @@ AndroidStudio - Chat  -  ROOM  - DocumentationGoogleJavaStyle  -  [Backend](http
 
 * [Objetives](#objetives)
 * [Description/Instructions](#descriptioninstrutions)
+* [DomainModel](#domainmodel)
 * [Backend](#backend)
 * [Screenshots](#screenshots)
 * [Features](#features)
 * [Technologies](#technologies)
 * [Sources](#sources)
-* [Status](#status)
+* [Status/ToDo](#status)
+* [Issues](#issues)
 * [License](#license)
 * [Contact](#contact)
 
@@ -33,6 +35,23 @@ The application must present comfortable contemporary features such as the
 format of the date of the messages, backup manipulation if there is no 
 connection, login to authenticate and find other users, in addition to other 
 features that make the use of chat comfortable.
+
+
+# DomainModel
+
+ <b>The Domain Model </b>
+ 
+ ![Screenshot](./img/domain_model.png) 
+ 
+ The USER has 0 or many MESSAGES, each MESSAGE has a single user.
+ A CONVERSATION has 2 USERS, a USER has 1 or more CONVERSATIONS.
+ The idea is to relate the data such that whenever there is a user at least 
+ have a conversation, with another user, this is so as not to have a blank 
+ screen when you just start the session, but immediately request by ID to find 
+ another user, a Once inside the conversation it is not mandatory to send 
+ messages.
+ Later, if you want to search for another user, you are given the option to 
+ switch from Activity to another conversation.
 
 
 ## Backend
@@ -85,13 +104,28 @@ For the complete Project, the following were used:
 - [Android ROOM](https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#0)
 
 
-## Status
+## Status/ToDo
  The graphical interface of the application and the navigation through the 
- Activities is this achieved, the most important thing to do is to relate the 
- data from the database to the Avtivity to correct the logical part of the 
- application.
+ Activities is this achieved.
+ The tests to do all the basic operations for each entity are approved.
+ The logic of the chat is missing, to connect the user with their messages 
+ and their conversation.
+ the messages do not show the user or current time.
+ the main chat room (MainActivity in this case) must be a conversation 
+ which calls the other related entities.
  
-
+ 
+ ## Issues
+ Activity doesn't accept me a way to share DB lists with all current records.
+ I can only instantiate the ViewModel in the MainActivity, if I try to 
+ instantiate elsewhere the app does not open.
+ The logcat warn a lot of task overload, that many processes are executed 
+ in few threads.
+ There are performance problems, if the PC was not with all other programs 
+ closed, the app may take time to start and a "interface does not respond" 
+ message appears.
+ 
+ 
 ## License
 Licenced by [MIT License](https://github.com/CharlieCondorcet/ChatDisc/blob/master/LICENSE)
 
